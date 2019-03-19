@@ -1,0 +1,109 @@
+
+
+const last_restart = new Date();
+
+const template = `
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>ISEKAI*ENGINE |⚙> DEV LOG <⚙|</title>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+  <style>
+    html, body {
+        background-color: #031416;
+        color: #16b673;
+        font-size: 18px;
+        font-family: 'Fira Mono', monospace;
+        margin: 0;
+        
+    }
+
+    h3 {
+        font-size: 1rem;
+        padding: 1rem 5rem;
+        padding-left: 0.5rem;
+        text-align: right;
+        background-color: #031416;
+        margin: 0;
+        color: #e66533 !important;
+        border-bottom: 0.25rem solid #16b673;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    pre, code {
+        margin: 0 0rem;
+        font-weight: bold;
+        padding: 0 1rem;
+    }
+
+    img {
+        display: block;
+        text-align: center;
+        align-self: center;
+        justify-self: center;
+        border: 0.5rem solid black;
+        margin: 1rem;
+    }
+
+    h1, h2 {
+        color: #e66533;
+        margin: 0;
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        background-color: #031416;
+        border-top: 0.25rem solid #16b673;
+        border-radius: 1rem;
+    }
+
+    h2::before {
+        content: "⚙> ";
+        display: inline;
+    }
+
+    code, .power_word {
+        font-weight: bold;
+        color: #cc9900;
+    }
+
+    code {
+        padding: 0.5rem;
+        margin: 0 1rem;
+        background-color: #031416;
+        display: inline-block;
+    }
+
+    p {
+        padding: 1rem 3rem;
+        margin: 0;
+    }
+
+    a {
+        color: #cc9900;
+    }
+  </style>
+</head>
+<body>
+  <markdown/>
+</body>
+</html>
+`;
+
+const power_words = (target) => target.
+    replace(/(\[.[^\]\[]*\])/ug, "<span class='power_word'>$1</span>").
+    replace("${server_restart}", `${last_restart.toLocaleString()} PDT`);
+
+export default ({
+    HTTP,
+    LOG: {
+        markdown
+    }
+}) => {
+    const send_log = (req, res) => {
+        res.send(power_words(template.replace("<markdown/>", markdown)));
+    };
+
+    HTTP.get("/log", send_log);
+    HTTP.get("/LOG", send_log);
+};

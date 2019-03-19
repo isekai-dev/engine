@@ -1,0 +1,10 @@
+[NODE]
+[HTTP]
+port = 8080
+
+# [HTTP_PUBLIC]
+
+# [[HTTP_MD]]
+# path = "/"
+# file = "README.md"
+# template = "default.html"
