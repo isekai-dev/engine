@@ -1,5 +1,8 @@
-export default (action_map, reducer = (i) => 
-    i) => 
+export default (
+    action_map, 
+    reducer = (i) => 
+        i
+) => 
     (input) => {
         const key = reducer(input);
 
