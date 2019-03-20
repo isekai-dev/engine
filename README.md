@@ -1,7 +1,7 @@
 
 
 
-![](./BAG/HTTP_PUBLIC/logo.png)
+![](./BAG/HTTP_PUBLIC/logo.gif)
 
 A different World.
 
