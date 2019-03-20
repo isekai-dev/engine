@@ -4,17 +4,6 @@ A different World.
 ## QUICK START
 Requires node.js to be installed.
 
-(SOON)
-```
-npm install -g degit
-degit @isekai/template <name of your world>
-
-cd <name of your world>
-npm install
-npm run start
-```
-
-(FUTURE)
 ```
 npm install -g isekai
 

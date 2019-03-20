@@ -1,12 +1,20 @@
 
-# [Isekai*Engine]
+```
+███╗██╗███████╗███████╗██╗  ██╗ █████╗ ██╗      ███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗███╗
+██╔╝██║██╔════╝██╔════╝██║ ██╔╝██╔══██╗██║▄ ██╗▄██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝╚██║
+██║ ██║███████╗█████╗  █████╔╝ ███████║██║ ████╗█████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗   ██║
+██║ ██║╚════██║██╔══╝  ██╔═██╗ ██╔══██║██║▀╚██╔▀██╔══╝  ██║╚██╗██║██║   ██║██║██║╚██╗██║██╔══╝   ██║
+███╗██║███████║███████╗██║  ██╗██║  ██║██║  ╚═╝ ███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗███║
+╚══╝╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝      ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚══╝
+                                                                                                    
+```
 LAST SERVER RESTART : ${server_restart}
 
 Congratulations! You've found me!
 
-###
+##
 
-## TWITCH
+# TWITCH
 Join the twitch chat @ [http://twitch.tv/InAStrangeMood]() 
 
     [SCHEDULE]
@@ -17,25 +25,31 @@ Join the twitch chat @ [http://twitch.tv/InAStrangeMood]()
 
 [Friday => Saturday] TRYING TO LIVE LIFE
 
-###
+##
 
-## THE GLORIOUS FRUITS OF REWARD
+# THE GLORIOUS FRUITS OF REWARD
 
     [ISEKAI*ENGINE][!]
-Done, fucking done.
+Done, fucking done. New website up at http://isekai.dev with the log. Running on [Isekai*Engine]. JFC though, I spent three days on "feature flags" and implemented a highly configurable/shareable engine instead. I guess it was worth it?
 
+## [3/20/2019] [🎶🎧 - Infinite Happiness]
 
-### [3/18/2019] [🎶🎧 - Infinite Sadness]
+# THE GLORIOUS FRUITS OF DISAPPOINTMENT
 
-## HOLY CRAP IS THIS HARD
+    [ISEKAI*ENGINE][!]
+CLI is working. Can npm i -g @isekai/engine and the run isekai build/etc. Nothing is running on top of it yet.
+
+## [3/19/2019] [🎶🎧 - Infinite Sadness]
+
+# HOLY CRAP IS THIS HARD
 Been working on the [ISEKAI*ENGINE] refactor all day and I might be able to finish tomorrow?
 
 See you then I guess?
 
 
-### [3/18/2019] [🎶🎧 - Infinite Sadness]
+## [3/18/2019] [🎶🎧 - Infinite Sadness]
 
-## FEATURE FLAGS, NEW RENDERER, ZALGO
+# FEATURE FLAGS, NEW RENDERER, ZALGO
 Woo back on the game. Did some bonus code last night to implement a cool magic zalgo system but my other features aren't ready. Oh crap... so many options. Going with [FEATURE FLAGS].
 
     [FEATURE FLAGS]
@@ -50,9 +64,9 @@ This way I can ship the client without the new [WEBGL] renderer but with the Zal
 Worked on the layout of [ISEKAI*ENGINE] and how it loads custom content/scripts.
 
 
-### [3/17/2019] [🎶🎧 - OF MONTREAL - POSTAL SERVICE]
+## [3/17/2019] [🎶🎧 - OF MONTREAL - POSTAL SERVICE]
 
-## [BONUS] NEW RENDERER THE NON SYSADMIN VERSION
+# [BONUS] NEW RENDERER THE NON SYSADMIN VERSION
 
 Wow, I'm finally done with adventures in SysAdmin land for now. I refactored the entire server architecture. I'm getting a bonus day in here for second work day. Kinda like second breakfast but less filling.
 
@@ -84,9 +98,9 @@ Zalgo replaces the [DIVINE] interaction system. Basically ZALGO are
 F̡̧̺̠̞̩̖͈̿U͉̭̻̩̲̟̩̻̿͆ͨ͗̊ͭͦ͜͢C̢̒̾̍̽͂̚҉̖͚̥̺̘̤̘K̵̸̬͇͎̰̯̗ͩͥ̓̈͂̏̆̎͗̀I̸̜̞̝̭̹͒ͨ̈́̌͢Ņ̄̏ͧ̎̽̋̎̚͏͏̜͓̝̻͇͍̼G̛͕̮̼̺̲̝̈́ͯ͊ͪ͂ͣ̓́ ̲͕͖̻̯͎̜͎͊̎̇͒̔̅̌͠M̹̘̬̫̮̬̝̖͔ͧͦA̧̞͙̩̼̅̉̾̈́ͪ̽͊ͣ̀͝Ǧ̶̭̞̙̺̦͖͓̬̮ͯ͆̒ͨ͌Į̶̻̝͉̠ͪ̎̓̈́̉̾̒ͬͮ́C̙̪͔̹͕̯̝̐̐̒͛͒̅ͪ̀̚ ̵̛̛͙͉̣̣͇̱̯̎ͯͩT̸͕̘ͨ̃́͌̎̄͝Ḩ̸̨͕̜̹̾ͥA͚͖̜̺͌͋̎͌̔ͨ̂͊͞Ț̬͇̺̔͐͐̄͐͡ ͎͔̰̫͐̍̓ͬ̀̎̚C̓̄͐̉͐҉͍̩̝͔ͅA̙̤̐͂͟͡͠ͅU̝̣̳͓̰͖͌͐ͬ̆͗̚Ș̻͍͙̥̤̅ͫ̕Ȩ̢̭̖̪͚ͯ̄̆̑͐̎ ̘̻̻̽ͤ͑ͭ͑ͪ̚͜C̡͕̤̞̹̗̩̯̅̈́̔̐̏̊͂̚͘H̱͙͉̠̰͚͙̱̝ͩ̒͆͜A̧̛̰̦̰̪͔͈͎͓͂͗̈̒̌̍N̵̼̬̈́̎͝G͔̣̥͕̫͔ͪ̓̍͝Ė̮̉̀ͅS͕͉͚̠͋ͯ ̹̄̉ͯ͆ͭ͋ͩ͠I̺̘̒ͨ̒̏͡ͅN͉̫̫̝͎̜͖ͤͬ͗̌ ̡̘͕͋ͮ͛ͨ͆ͦ̑̚T̥̰̣̂̅̾I̧̤̤̖͍ͮ̂ͯ̒ͧM͈̟̭̻̟̅ͧ̇̋͊́Ė̸͇ͥ̾͂́͆͑̚ ͂̆̚͏̹̖͎̹̫̙A̷̖͚̝͖̥̓ͫ̎N͎̻̦̱̪͈̦̘̏͋͢͟D̷̊̈̓͏̠̱̖ ̙̮͖͆́̕S̴̰̼̖̮̣͍̺̦̖̆͊̏̀ͫ͒̕͢P̵̫̤̦̼͖̼͈ͭͥͧ̾ͮ̐̆Ả̶͎̳̭̐́Cͨ͊̒͟͏̦̼̥Ę̯͚̘̻̬̟̗̼̈́̋̈́̀͂̽̓͟.̴̦̰̹͇̱͛̑͟
 
 
-### [WEEKEND] [ 3/15/2019 - 3/16/2019 ] [🎶🎧 - DETHKLOK - THE UNICORNS]
+## [WEEKEND] [ 3/15/2019 - 3/16/2019 ] [🎶🎧 - DETHKLOK - THE UNICORNS]
 
-## NEW RENDERER
+# NEW RENDERER
 
 Welp, its time to take svelte out back so we can make room for our new renderer.
 
@@ -138,9 +152,9 @@ We gotta get dat perf up. Also it'd be lovely if all platforms matched
     [DATA][INVESTIGATE]
 I'm going to compact the data over the bifrost so we're sending less. Should even further help perf and look cool on matrix.html!
 
-### [ 3/14/2019 ] [🎶🎧 - THE BLACKEST OF METAL - THE SOCIAL NETWORK] [261]
+## [ 3/14/2019 ] [🎶🎧 - THE BLACKEST OF METAL - THE SOCIAL NETWORK] [261]
 
-## FACTIONS! AND SSE!
+# FACTIONS! AND SSE!
 
 I couldn't sleep I was so excited to implement the next parts. Fuck.
 
@@ -206,9 +220,9 @@ Clouds now spawn when enough ghosts have been collected. Didn't you know clouds 
 I really want to make it rain... Got some ideas for this.
 WOO, nvm. Got a version of rain in that I'm happy with. I still want to revist the animation.
 
-### [ 3/13/2019 ] [🎶🎧 - CLASSICAL ROCK COVERS]
+## [ 3/13/2019 ] [🎶🎧 - CLASSICAL ROCK COVERS]
 
-## The Start?
+# The Start?
 
 Starting a dev log so I can keep track of anything cool I did that day. I'm going to back fill the previous days as I remember them. Oh.. and I started streaming just the browser at "inastrangemood" oo Twitch.tv (Dwarf fortress joke). No sound/voice, just telling people to go to http://goblin.life which I got up and working yesterday.
 
@@ -245,9 +259,9 @@ Heh, today all started on a quest for weather. Maybe I'll get to it.
     [SERVER SIDE PUSHsoon]
 Better than polling.
 
-### [ 3/12/2019 ] [🎶🎧 - DAFT PUNK]
+## [ 3/12/2019 ] [🎶🎧 - DAFT PUNK]
 
-## [http://goblin.life]() is up!
+# [http://goblin.life]() is up!
 
 Got all the orchestration, ssl (https LetsEncrypt), and hosting (digital ocean). Took a bit to get the webhgook push working but holy crap is this way better. Also tracked down a nasty bug where the dev environment was different than production! It turns out that some laws were stored as lower case in the git. Changed that and boom fixed. Lots of wasted time debugging that one.
 
@@ -260,9 +274,9 @@ https support and auto redirect http to https
     [GITHUB WEBHOOK]
 This is for auto updating/deploying the server when a chagne is made on the production branch.
 
-### [3/11/2019] [🎶🎧 - GLORYHAMMER]
+## [3/11/2019] [🎶🎧 - GLORYHAMMER]
 
-## MULTIPLAYER AND A BRIEF HISTORY OF TIME AND SPACE
+# MULTIPLAYER AND A BRIEF HISTORY OF TIME AND SPACE
 Got multiplayer working! Woweeeee. Short blog too far in the past. Anyhow here's all the shit that happened prior to this....
 
     [CORE]
@@ -293,4 +307,4 @@ Did some CSS3 magic to rotate the gameboard and give it a 3D effect. Took 15 min
     [MULTIPLAYER]
 Woo, the [Isekai⚙Engine] is running on a server and rendering the data on the client! This took a day and was an amazing part to get up and running.
 
-### [EONS AGO THE PROPHECY FORETOLD] [🎶🎧 EPIC MUSIC MOSTLY]
+## [EONS AGO THE PROPHECY FORETOLD] [🎶🎧 EPIC MUSIC MOSTLY]

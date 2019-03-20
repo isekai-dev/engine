@@ -2,7 +2,8 @@
 [HTTP]
 port = 8080
 
-# [HTTP_PUBLIC]
+[HTTP_API]
+[HTTP_PUBLIC]
 
 # [[HTTP_MD]]
 # path = "/"

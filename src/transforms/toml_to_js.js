@@ -2,19 +2,21 @@ import fs from "fs";
 import toml from "toml";
 import path from "path";
 import glob from "glob";
+import c from "chalk";
+import builders from "../rollup/builders.js";
 
-import builders from "./builders";
+c.enabled = true;
+c.level = 3;
 
-const Logger = (section) => 
-    (...message) => 
-        console.log(section, ` ⚙> `, ...message); 
+const log_equip = (equip) => 
+    c.yellow(equip);
 
 export default (configFile) => 
     // Mix Config File in and run these in order
     Object.values({
         gather_equipment: () => 
             ({
-                EQUIPMENT: glob.sync(`./EQUIP/*/`).
+                EQUIPMENT: glob.sync(`./SHOP/*/`).
                     reduce((obj, equip_path) => 
                         ({ 
                             [path.basename(equip_path)]: true,
@@ -22,7 +24,7 @@ export default (configFile) =>
                         }), {})
             }),
         read_config: ({
-            configFile
+            configFile,
         }) => {
         // verify toml exists
             let raw;
@@ -42,75 +44,68 @@ export default (configFile) =>
 
         set_names: ({
             configFile,
-            EQUIPMENT
+            config
         }) => {
             const name = path.basename(configFile, `.toml`);
-
-            const log = Logger(name);
-            log(`BEGIN COMPOSITION`);
-            log(`AVAILABLE EQUIPMENT`, Object.keys(EQUIPMENT).
-                join(` - `));
+            console.log(`[${name}] ${config.NODE ? `NODE` : `BROWSER`} build started.`);
 
             const package_path = path.dirname(path.resolve(configFile));
             const package_name = package_path.
                 split(path.sep).
                 pop();
 
-            log(`Paths: \r\n`, Object.entries({
-                package_name,
-                project_dir_name: package_path,
-                name
-            }).
-                map(([ key, value ]) => 
-                    `${key}: ${value}`).
-                join(`\r\n`));
-
             return {
                 package_path,
                 package_name,
-                log,
                 name,
             };
         },
 
         write_entry: ({
             config,
-            log,
             name,
-            EQUIPMENT
+            EQUIPMENT,
         }) => {
         // WRITE OUT FILE
-            log(path.join(__dirname, `../src/**/*`));
-    
             let entry = ``;
             
             const write = (data) => 
                 entry += `${data}\r\n`;
         
-            write(`import Isekai from "@isekai/engine";`);
-            write(`Isekai.SET(${JSON.stringify(config)});`);
+            write(`import isekai from "isekai";`);
+            write(`isekai.SET(${JSON.stringify(config)});`);
             write(``);
     
             const equiped = Object.keys(config).
                 filter((key) => 
                     key === key.toUpperCase() && EQUIPMENT[key]).
                 map((key) => {
-                    write(`import ${key} from "../EQUIP/${key}/index.js";`);
+                    write(`import ${key} from "../SHOP/${key}/index.js";`);
 
                     return key;
-                }).
-                reduce((output, key) => 
-                    `${output}\t${key},\r\n`, ``);
+                });
 
-            write(`Isekai.EQUIP({\r\n${equiped}});`);
+            const keys = equiped.reduce((output, key) => 
+                `${output}\t${key},\r\n`, ``);
 
-            const input = path.join(`BIN`, `${name}.entry.js`);
-    
-            log(`WRITING`, input);
-    
+            write(`isekai.EQUIP({\r\n${keys}});`);
+
+            const input = path.join(`.MAGIC`, `${name}.entry.js`);
+
             // write out their index.js
             fs.writeFileSync(input, entry, `utf-8`);
-    
+            
+            console.log(`
+[${name}]
+SHOP:
+${Object.keys(EQUIPMENT).
+        map(log_equip).
+        join(` - `)}
+
+EQUIPPED:
+${c.red(equiped.join(` - `))}
+`);
+            
             return {
                 input
             };
@@ -118,35 +113,35 @@ export default (configFile) =>
 
         run_builders: ({
             input,
-            log,
             name,
-            config
+            config,
         }) => {
+            const target = config.NODE 
+                ? `NODE` 
+                : `BROWSER`;
+
+            const output = `.MAGIC/${name}.${target}.js`;
+
             if(config.NODE && config.BROWSER) {
                 throw new Error(`You cannot target both [NODE] and [BROWSER]`);
             }
 
-            if(config.NODE) {
-                log(`NODE BUILD`);
-                
+            if(config.NODE) {               
                 return {
+                    output,
                     build_info: builders.node({
                         input,
-                        output: `BIN/${name}.bundle.js`
+                        output
                     })
                 };
             }
         
             if(config.BROWSER) {
-                log(`BROWSER BUILD`);
-
                 return {
+                    output,
                     build_info: builders.browser({
                         input,
-                        output: {
-                            file: `BIN/${name}.bundle.js`,
-                            format: `cjs`,
-                        }
+                        output
                     })
                 };
             }

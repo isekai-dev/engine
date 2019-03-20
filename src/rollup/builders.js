@@ -1,19 +1,24 @@
 import toml from "rollup-plugin-toml";
-import glob from "./rollup/plugin-glob.js";
+
 
 import svelte from "rollup-plugin-svelte";
 import resolve from "rollup-plugin-node-resolve";
 import copy from "rollup-plugin-copy-glob";
 import replace from "rollup-plugin-replace";
-import spritesmith from "rollup-plugin-sprite";
+
 import json from "rollup-plugin-json";
 import md from "rollup-plugin-commonmark";
 import cjs from "rollup-plugin-commonjs";
 
 import { terser } from "rollup-plugin-terser";
 import uuid from "uuid/v1";
-import texturePacker from "spritesmith-texturepacker";
 
+/*
+ * import spritesmith from "rollup-plugin-sprite";
+ * import texturePacker from "spritesmith-texturepacker";
+ */
+
+import glob from "./plugin-glob.js";
 import version from "./version.js";
 
 const CODE_VERSION = uuid();
@@ -30,6 +35,38 @@ const do_copy = (copyObject) =>
         ));
 
 let CLIENT_VERSION = uuid();
+
+const external = [
+    `express`,
+    `isekai`,
+    `fs`,
+    `http`,
+    `https`
+];
+
+const node = ({
+    input,
+    output,
+    copy: copyObject = {}
+}) => 
+    ({
+        input,
+        output: {
+            sourcemap: `inline`,
+            file: output,
+            format: `cjs`,
+        },
+        external,
+        plugins: [
+            glob(),
+            replace({
+                CODE_VERSION,
+            }),
+            md(),
+            do_copy(copyObject),
+            toml
+        ],
+    });
 
 const browser = ({
     input,
@@ -84,34 +121,11 @@ const browser = ({
             production && terser(),
             do_copy(copyObject),
             version({
-                path: `./bin/client.version`,
+                path: `./.MAGIC/client.version`,
                 version: () => 
                     CLIENT_VERSION
             })
         ]
-    });
-
-const node = ({
-    input,
-    output,
-    copy: copyObject = {}
-}) => 
-    ({
-        input,
-        output: {
-            sourcemap: `inline`,
-            file: output,
-            format: `cjs`,
-        },
-        plugins: [
-            glob(),
-            replace({
-                CODE_VERSION,
-            }),
-            md(),
-            do_copy(copyObject),
-            toml
-        ],
     });
 
 export default {

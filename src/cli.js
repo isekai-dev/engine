@@ -1,47 +1,37 @@
 #!/usr/bin/env node
 
-import yargs from "yargs";
-import glob from "glob";
+import vorpal from "vorpal";
+import commands from "./commands/*.js";
+import { version } from "../package.json";
 
-import build from "./build.js";
-import start from "./start.js";
+import "./lib/format.js";
 
-const log = (title, ...message) => 
-    console.log(title, ` ⚙> `, ...message); 
+import chalk from "chalk";
 
-const targets = glob.sync(`CLASS/*.toml`);
+const v = vorpal();
+process.stdout.write(`\x1Bc`);
 
-yargs.
-    command({
-        command: `build [targets..]`,
-        alias: [ `b` ],
-        desc: `Build a [CLASS]`,
-        handler: (argv) => {
-            const build_targets = argv.targets || targets;
-            
-            return Promise.all(build_targets.map(build));
+console.log(chalk.green(`
+██╗███████╗███████╗██╗  ██╗ █████╗ ██╗      ███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗    
+██║██╔════╝██╔════╝██║ ██╔╝██╔══██╗██║▄ ██╗▄██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝    
+██║███████╗█████╗  █████╔╝ ███████║██║ ████╗█████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗      
+██║╚════██║██╔══╝  ██╔═██╗ ██╔══██║██║▀╚██╔▀██╔══╝  ██║╚██╗██║██║   ██║██║██║╚██╗██║██╔══╝      
+██║███████║███████╗██║  ██╗██║  ██║██║  ╚═╝ ███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗    
+╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝      ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝    
+VERSION: ${version}                                                                                         
+`));
+
+Object.entries(commands).
+    forEach(([
+        name, {
+            help,
+            handler,
+            autocomplete
         }
-    }).
+    ]) => 
+        v.command(name, help).
+            autocomplete(autocomplete || []).
+            action(handler));
 
-    command({
-        command: `ls`,
-        desc: `List available [CLASS]`,
-        handler: () => {
-            log(`AVAILABLE [CLASS]`, targets);
-        }
-    }).
-
-    command({
-        command: `start [targets..]`,
-        alias: [ `s` ],
-        desc: `Start a [CLASS]`,
-        handler: (argv) => {
-            const start_targets = argv.targets || targets;
-
-            return Promise.all(start_targets.map(
-                (target) => 
-                    start(target)
-            ));
-        }
-    }).
-    argv;
+v.delimiter(chalk.bold.green(`>`)).
+    show();

@@ -3,10 +3,10 @@ const Isekai = ({
     SET: (obj) => 
         Object.entries(obj).
             forEach(([ key, value ]) => {
-                Isekai[key] = {
-                    ...Isekai[key],
+                Isekai[key] = Object.assign(value, {
+                    ...Isekai[key], 
                     ...value
-                };
+                });
             }),
 
     EQUIP: (obj) => 

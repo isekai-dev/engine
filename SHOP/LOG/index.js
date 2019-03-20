@@ -1,17 +1,20 @@
 export default ({
-    CONSOLE: {
+    LOG: {
         left = `|⚙>`,
         right = `<⚙|`
     },
-    equip
+    SET
 }) => {
     const LOG = {
+        left,
+        right,
+
         log: (...args) => {
             console.log(`\t`, ...args);
         },
 
         info: (...args) => {
-            console.log(left, `\t`, ...args, `\t`, right);
+            console.log(LOG.left, `\t`, ...args, `\t`, LOG.right);
         },
 
         section: (title, body) => {
@@ -21,7 +24,7 @@ export default ({
         }
     };
 
-    equip({
+    SET({
         LOG: Object.assign(LOG.log, LOG)
     });
 };

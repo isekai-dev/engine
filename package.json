@@ -1,19 +1,21 @@
 {
-  "name": "@isekai/engine",
-  "version": "1.0.0",
+  "name": "isekai",
+  "version": "0.0.1",
   "description": "A Stranger in a Strange Land",
-  "main": "BIN/isekai.js",
+  "main": ".MAGIC/isekai.js",
   "scripts": {
-    "build:cli": "rollup -c",
-    "build:isekai": "node ./BIN/cli.js build",
-    "build": "run-s build:cli build:isekai",
-    "watch": "run-p watch:cli watch:isekai",
-    "watch:cli": "rollup -c --watch",
-    "watch:isekai": "nodemon --watch ./BIN/cli.js build",
-    "test": "./node_modules/.bin/mocha --require @babel/register"
+    "build": "rollup -c",
+    "watch": "rollup -c --watch",
+    "test": "./node_modules/.bin/mocha --require @babel/register",
+    "start": "node ./.MAGIC/cli.js"
   },
   "bin": {
-    "isekai": "BIN/cli.js"
+    "isekai": ".MAGIC/cli.js"
+  },
+  "homepage": "https://isekai.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isekai-dev/engine"
   },
   "author": "AGoblinKing",
   "devDependencies": {
@@ -28,8 +30,6 @@
     "glob": "^7.1.2",
     "md5": "^2.2.1",
     "mocha": "^6.0.2",
-    "nodemon": "^1.18.10",
-    "npm-run-all": "^4.1.5",
     "rollup": "^1.3.3",
     "rollup-copy-plugin": "^0.1.0",
     "rollup-plugin-commonjs": "^9.2.1",
@@ -52,10 +52,13 @@
   },
   "dependencies": {
     "@octokit/webhooks": "^5.3.3",
+    "chalk": "^2.4.2",
     "chokidar": "^2.1.2",
     "express": "^4.16.4",
+    "isekai": "file:.",
     "pm2": "^3.4.0",
     "uuid": "^3.3.2",
+    "vorpal": "^1.12.0",
     "yargs": "^13.2.2"
   },
   "eslintConfig": {

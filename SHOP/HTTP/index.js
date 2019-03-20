@@ -4,15 +4,24 @@ import fs from "fs";
 
 import https from "https";
 import http from "http";
+import LOG_equip from "../LOG/index.js";
 
 export default ({
     LOG,
     HTTP: {
         ssl = false
     },
-    SET
+    SET, 
+    EQUIP
 }) => {
     const app = express();
+
+    if(!LOG) {
+        console.log(`EQUIPING LOG`);
+        EQUIP({
+            LOG: LOG_equip
+        });
+    }
 
     if(ssl) {
         https.createServer({

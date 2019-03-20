@@ -41,6 +41,19 @@ describe(`[ISEKAI*ENGINE]`, () => {
             bar: 1,
             bar2: undefined
         });
+
+        let calls = 0;
+        Isekai.SET({
+            FOO: () => {
+                calls += 1;
+            }
+        });
+
+        expect(Isekai.FOO).is.a(`function`);
+        expect(Isekai.FOO.bar).to.equal(1);
+
+        [ 1, 2, 3 ].forEach(Isekai.FOO);
+        expect(calls).to.equal(3);
     });
 
     it(`should EQUIP`, () => {
@@ -59,7 +72,7 @@ describe(`[ISEKAI*ENGINE]`, () => {
             bar: () => {
                 called += 1;
                 expect(called).to.equal(2);
-            }
+            },
         });
 
         expect(called).to.equal(2);
