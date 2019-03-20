@@ -1,4 +1,15 @@
 ![](./BAG/HTTP_PUBLIC/logo.gif)
+<p align="center">
+    <a href="https://travis-ci.org/isekai-dev/engine">
+        <img src="https://img.shields.io/travis/isekai-dev/engine.svg?style=for-the-badge" alt="build status"/>
+    </a>
+    <a href="./LICENSE">
+        <img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=for-the-badge" alt="license"/>
+    </a>
+    <a href="https://discord.gg/kc2nsTc">
+        <img src="https://img.shields.io/discord/558071350304964640.svg?style=for-the-badge" alt="discord chat">
+    </a>
+</p>
 
 A different World.
 
