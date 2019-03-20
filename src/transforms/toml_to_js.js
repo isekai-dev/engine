@@ -86,9 +86,10 @@ export default (configFile) =>
                 });
 
             const keys = equiped.reduce((output, key) => 
-                `${output}\t${key},\r\n`, ``);
+                `${output}    ${key},\r\n`, ``);
 
-            write(`isekai.EQUIP({\r\n${keys}});`);
+            write(`
+isekai.EQUIP({\r\n${keys}});`);
 
             const input = path.join(`.MAGIC`, `${name}.entry.js`);
 

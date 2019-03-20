@@ -11,10 +11,10 @@ import get_list from "../lib/get_list.js";
 export default ({
     command: `watch [classes...]`,
     help: `watch [CLASS] files for changes and rebuild.`,
-    handler: ({ classes = get_list() }) =>
+    handler: ({ classes = get_list() }, cb) =>
         filter_list(classes)((target) => {
             const data = toml_to_js(`./CLASS/${target}.toml`);
-            
+
             const { build_info } = data;
         
             // rebuild on file chagne
