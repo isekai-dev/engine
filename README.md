@@ -1,5 +1,9 @@
-![](./BAG/HTTP_PUBLIC/logo.gif)
+
 <p align="center">
+    <a href="http://isekai.dev">
+        <img src="./BAG/HTTP_PUBLIC/logo.gif" alt="logo" />
+    </a>
+    <br />
     <a href="https://travis-ci.org/isekai-dev/engine">
         <img src="https://img.shields.io/travis/isekai-dev/engine.svg?style=for-the-badge" alt="build status"/>
     </a>
