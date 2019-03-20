@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/isekai-dev/engine"
   },
+  "license": "see LICENSE file",
   "author": "AGoblinKing",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
