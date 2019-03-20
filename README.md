@@ -1,6 +1,3 @@
-
-
-
 ![](./BAG/HTTP_PUBLIC/logo.gif)
 
 A different World.
