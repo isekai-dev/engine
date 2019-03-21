@@ -1,6 +1,6 @@
 {
   "name": "isekai",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Stranger in a Strange Land",
   "main": ".MAGIC/isekai.js",
   "scripts": {

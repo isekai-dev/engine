@@ -23,6 +23,7 @@ export default (configFile) =>
                             ...obj 
                         }), {})
             }),
+
         read_config: ({
             configFile,
         }) => {
@@ -47,7 +48,6 @@ export default (configFile) =>
             config
         }) => {
             const name = path.basename(configFile, `.toml`);
-            console.log(`[${name}] ${config.NODE ? `NODE` : `BROWSER`} build started.`);
 
             const package_path = path.dirname(path.resolve(configFile));
             const package_name = package_path.
@@ -97,7 +97,7 @@ isekai.EQUIP({\r\n${keys}});`);
             fs.writeFileSync(input, entry, `utf-8`);
             
             console.log(`
-[${name}]
+[${name}][${config.NODE ? `NODE` : `BROWSER`}]
 SHOP:
 ${Object.keys(EQUIPMENT).
         map(log_equip).

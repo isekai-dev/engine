@@ -21,6 +21,7 @@ console.log(chalk.green(`
 VERSION: ${version}                                                                                         
 `));
 
+
 Object.entries(commands).
     forEach(([
         name, {
@@ -28,20 +29,35 @@ Object.entries(commands).
             handler,
             autocomplete,
             hidden,
+            command,
             alias = [],
             cancel = () => {}
         }
     ]) => { 
-        const command = v.command(name, help).
+        const ist = v.command(command || name, help).
             alias(alias).
             autocomplete(autocomplete || []).
             cancel(cancel).
             action(handler);
 
         if(hidden) {
-            command.hidden();
+            ist.hidden();
         }
     });
 
-v.delimiter(chalk.bold.green(`>`)).
-    show();
+
+const startup_commands = process.argv.slice(2);
+
+startup_commands.reduce((prev, cur) => 
+    prev.then(() => 
+        v.exec(cur)), Promise.resolve()
+).
+    then(() => {
+        if(startup_commands.length > 0) {
+            return;
+        }
+        
+        v.delimiter(chalk.bold.green(`>`)).
+            show();
+    });
+

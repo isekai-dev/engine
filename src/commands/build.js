@@ -5,12 +5,12 @@ import get_list from "../lib/get_list.js";
 import filter_list from "../lib/filter_list.js";
 
 export default ({
-    command: `build [classes...]`,
+    command: `build [CLASS...]`,
     help: `build all [CLASS] files.`,
     autocomplete: get_list(),
     hidden: true,
-    handler: ({ classes = get_list() }) => 
-        filter_list(classes)(async (target) => {
+    handler: ({ CLASS = get_list() }) => 
+        filter_list(CLASS)(async (target) => {
             const { build_info, name } = await toml_to_js(`./CLASS/${target}.toml`);
             const bundle = await rollup.rollup(build_info);
 

@@ -3,11 +3,34 @@ import { spawn } from "child_process";
 
 export default ({
     command: `pm2 [commands...]`,
-    help: `excute a pm2 command`,
+
+    help: `execute a pm2 command`,
     hidden: true,
-    handler: ({ commands }) => 
-        spawn(`node`, `${__dirname}/../node_modules/pm2/bin/pm2 ${commands.join(` `)}`.split(` `), {
-            env: process.env,
-            stdio: `inherit`
-        })
+
+    cancel() {
+        if(!this.node) {
+            return;
+        }
+
+        this.node.kill();
+    },
+
+    handler({ commands }, cb) {
+        if(!commands) {
+            console.log(`You must provide commands for pm2\r\n`);
+            
+            return cb();
+        }
+        
+        return new Promise((resolve) => {
+            this.node = spawn(`node`, `${__dirname}/../node_modules/pm2/bin/pm2 ${commands.join(` `)}`.split(` `), {
+                env: process.env,
+                stdio: `inherit`
+            });
+
+            this.node.on(`close`, () => {
+                resolve();
+            });
+        });
+    }
 });

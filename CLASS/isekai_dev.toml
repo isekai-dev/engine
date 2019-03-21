@@ -1,4 +1,5 @@
 [NODE]
+[LOG]
 [HTTP]
 port = 8080
 

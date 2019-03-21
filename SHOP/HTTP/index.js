@@ -17,10 +17,9 @@ export default ({
     const app = express();
 
     if(!LOG) {
-        console.log(`EQUIPING LOG`);
-        EQUIP({
-            LOG: LOG_equip
-        });
+        console.log(`[HTTP] REQUIRES [LOG]`);
+        
+        return;
     }
 
     if(ssl) {
@@ -55,8 +54,6 @@ export default ({
     }
     
     SET({
-        HTTP: {
-            app
-        }
+        HTTP: app
     });
 };

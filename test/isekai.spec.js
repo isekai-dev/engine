@@ -69,12 +69,23 @@ describe(`[ISEKAI*ENGINE]`, () => {
                 expect(called).to.equal(1);
                 expect(bar).to.equal(1);
             },
-            bar: () => {
+            bar: ({
+                EQUIP
+            }) => {
                 called += 1;
                 expect(called).to.equal(2);
+
+                EQUIP({
+                    again: ({
+                        again
+                    }) => {
+                        called += 1;
+                        expect(again).to.not.be.a(`undefined`);
+                    }
+                });
             },
         });
 
-        expect(called).to.equal(2);
+        expect(called).to.equal(3);
     });
 });

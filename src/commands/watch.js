@@ -9,24 +9,22 @@ import filter_list from "../lib/filter_list.js";
 import get_list from "../lib/get_list.js";
 
 const watch_prompt = () => 
-    console.log(`PRESS [CTRL+C] TO QUIT YOUR WATCH`);
+    console.log(`[BUILT] PRESS [CTRL+C] TO QUIT YOUR WATCH`);
 
 export default ({
-    command: `watch [classes...]`,
+    command: `watch [CLASS...]`,
     help: `watch [CLASS] files for changes and rebuild.`,
     hidden: true,
     cancel () {
         this.watchers.forEach((watcher) => 
             watcher.close());
-        console.log(`WATCH STOPPED`);
+        console.log(`YOUR WATCH HAS ENDED`);
     },
-    handler({ classes = get_list() }, cb) {
-        watch_prompt();
-
+    handler({ CLASS = get_list() }, cb) {
         return new Promise((resolve) => {
             this.watchers = [];
             
-            filter_list(classes)((target) => {
+            filter_list(CLASS)((target) => {
                 const file_path = `./CLASS/${target}.toml`;
 
                 const data = toml_to_js(file_path);
