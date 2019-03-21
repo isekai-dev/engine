@@ -4,6 +4,7 @@ import toml_to_js from "../transforms/toml_to_js.js";
 import get_list from "../lib/get_list.js";
 import filter_list from "../lib/filter_list.js";
 
+
 export default ({
     commander: `spawn [CHARACTERS...]`,
     help: `spawn [CHARACTERS] files`,
@@ -15,13 +16,15 @@ export default ({
             const {
                 output,
             } = toml_to_js(`./CHARACTERS/${name}.toml`);
-            console.log(`watching`, output);
 
             pm2.start({
                 name,
                 script: output,
-                watch: true,
+                watch: `./${output}`,
+                force: true,
                 watch_options: {
+                    // yup PM2 was setting a default ignore
+                    ignored: ``,
                     usePolling: true
                 },
                 max_restart: 5 

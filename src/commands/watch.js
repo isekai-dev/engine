@@ -12,8 +12,9 @@ const watch_prompt = () =>
     console.log(`[BUILT] PRESS [CTRL+C] TO QUIT YOUR WATCH`);
 
 export default ({
-    command: `watch [CHARACTERS...]`,
-    help: `watch [CHARACTER] files for changes and rebuild.`,
+    command: `load [CHARACTERS...]`,
+    help: `load [CHARACTER] saves`,
+    alias: [ `regenerate`, `recreate`, `watch` ],
     hidden: true,
     cancel () {
         this.watchers.forEach((watcher) => 

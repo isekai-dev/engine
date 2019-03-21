@@ -6,7 +6,7 @@ import filter_list from "../lib/filter_list.js";
 
 export default ({
     command: `build [CHARACTERS...]`,
-    help: `build all [CHARACTERS] files.`,
+    help: `build all [CHARACTER] save(s).`,
     autocomplete: get_list(),
     hidden: true,
     handler: ({ CHARACTERS = get_list() }) => 
@@ -24,6 +24,6 @@ export default ({
             console.log(`[${name}] Build Complete.\r\n`);
         }).
             then((promises) => {
-                console.log(`Built ${promises.length} [CHARACTER] file(s).`);
+                console.log(`Built ${promises.length} [CHARACTER] save(s).`);
             })
 });

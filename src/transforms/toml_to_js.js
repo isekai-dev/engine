@@ -100,7 +100,7 @@ isekai.EQUIP({\r\n${keys}});`);
 [${name}][${config.NODE ? `NODE` : `BROWSER`}]
 
 [SKILLS]:
-${c.red(equiped.join(` - `))}
+${c.blueBright(equiped.join(` - `))}
 `);
             
             return {
