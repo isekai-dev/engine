@@ -27,7 +27,7 @@ export default ({
                     ignored: ``,
                     usePolling: true
                 },
-                max_restart: 5 
+                max_restart: 0
             });
         });
 

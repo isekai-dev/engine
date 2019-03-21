@@ -5,19 +5,12 @@ import https from "https";
 import http from "http";
 
 export default ({
-    LOG,
     HTTP: {
         ssl = false
     },
     SET
 }) => {
     const app = express();
-
-    if(!LOG) {
-        console.log(`[HTTP] REQUIRES [LOG]`);
-        
-        return;
-    }
 
     if(ssl) {
         https.createServer({
@@ -26,13 +19,13 @@ export default ({
             ca: fs.readFileSync(`${ssl}/fullchain.pem`)
         }, app).
             listen(443, () => {
-                LOG.info(`[HTTPS]`);
-                LOG(`BIFROST SECURED`);
+                console.log(`[HTTPS]`);
+                console.log(`BIFROST SECURED`);
             });
 
         const redirectApp = express();
     
-        LOG(`Redirecting to HTTP to HTTPS`);
+        console.log(`Redirecting to HTTP to HTTPS`);
 
         redirectApp.all(`*`, (req, res) => {  
             res.redirect(`https://${req.headers.host}${req.url}`);
@@ -44,9 +37,9 @@ export default ({
 
     } else {
         app.listen(8080, () => {
-            LOG.info(`⚠️[HTTP]⚠️`);
-            LOG(`BIFROST INSECURE`);
-            LOG(`Listening on http://localhost:8080`);
+            console.log(`⚠️[HTTP]⚠️`);
+            console.log(`BIFROST INSECURE`);
+            console.log(`Listening on http://localhost:8080`);
         });
     }
     

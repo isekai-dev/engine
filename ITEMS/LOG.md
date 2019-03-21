@@ -1,20 +1,17 @@
-![](./BAG/HTTP_PUBLIC/logo.gif)
-LAST SERVER RESTART : ${server_restart}
+```
+██╗███████╗███████╗██╗  ██╗ █████╗ ██╗      ███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗    
+██║██╔════╝██╔════╝██║ ██╔╝██╔══██╗██║▄ ██╗▄██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝    
+██║███████╗█████╗  █████╔╝ ███████║██║ ████╗█████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗      
+██║╚════██║██╔══╝  ██╔═██╗ ██╔══██║██║▀╚██╔▀██╔══╝  ██║╚██╗██║██║   ██║██║██║╚██╗██║██╔══╝      
+██║███████║███████╗██║  ██╗██║  ██║██║  ╚═╝ ███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗    
+╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝      ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝    
+VERSION: ${version}  
+SINCE: ${server_restart}
+```
 
 Congratulations! You've found me!
 
-##
-
-# TWITCH
 Join the twitch chat @ [http://twitch.tv/InAStrangeMood]() 
-
-    [SCHEDULE]
-24/7 STREAM
-
-    [Q&A]
-[Sunday => Thursday] MIDNIGHT PST UNTIL 6 AM PST
-
-[Friday => Saturday] TRYING TO LIVE LIFE
 
 ##
 
@@ -99,7 +96,7 @@ Welp, its time to take svelte out back so we can make room for our new renderer.
 The server went down sometime between me falling asleep and waking back up. I setup monitoring but I never charge my phone so sorry world. Wtf nodemon didn't rest.. nodemon is for development.. okay installed forever! Things check out great on development... push push.. manually restart of process... start.. . .. . CRASH.. FUCK. okay quick script change start... CANNOT BIND PORT .. fak fka fka fkafkak . . Oh http://goblin.life is working?
 
 And that brings us to now. 
-![What is Sys Admin](/assets/memes/is_this_being_sysadmin.jpg)
+![What is Sys Admin](/memes/is_this_being_sysadmin.jpg)
 
 Anyhow, back in the office and trying to figure out wtf is going on there while also trying to update to the new renderer which will offer consistent looks and much better perf!
 

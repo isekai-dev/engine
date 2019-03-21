@@ -63,6 +63,7 @@ const node = ({
                 CODE_VERSION,
             }),
             md(),
+            json(),
             do_copy(copyObject),
             toml
         ],

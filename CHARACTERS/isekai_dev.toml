@@ -1,10 +1,15 @@
 [NODE]
-[LOG]
+# [LOG]
 [HTTP]
 port = 8080
 
-[HTTP_API]
-[HTTP_PUBLIC]
+# [HTTP_API]
+[HTTP_STATIC]
+public = "/"
+
+[HTTP_MARKDOWN."/"]
+markdown = "LOG.md"
+template = "log.template.html"
 
 # [[HTTP_MD]]
 # path = "/"
