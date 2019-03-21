@@ -1,7 +1,7 @@
 
 <p align="center">
     <a href="http://isekai.dev">
-        <img src="./ITEMS/HTTP_PUBLIC/logo.gif" alt="logo" />
+        <img src="./ITEMS/public/logo.gif" alt="logo" />
     </a>
     <br />
     <a href="https://travis-ci.org/isekai-dev/engine">
