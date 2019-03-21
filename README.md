@@ -1,7 +1,7 @@
 
 <p align="center">
     <a href="http://isekai.dev">
-        <img src="./BAG/HTTP_PUBLIC/logo.gif" alt="logo" />
+        <img src="./ITEMS/HTTP_PUBLIC/logo.gif" alt="logo" />
     </a>
     <br />
     <a href="https://travis-ci.org/isekai-dev/engine">
@@ -59,7 +59,7 @@ port = 8080
 # template = "default.html
 ```
 
-~~into~~
+into
 ```js
 import isekai from "isekai";
 isekai.SET({"NODE":{},"LOG":{},"HTTP":{"port":8080},"HTTP_API":{},"HTTP_PUBLIC":{}});
