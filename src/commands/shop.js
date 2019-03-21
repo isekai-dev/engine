@@ -1,7 +1,7 @@
 import get_list from "../lib/get_list.js";
 
 export default ({
-    help: `Show available [CLASS] files from the [SHOP].`,
+    help: `Show available [CHARACTER] files.`,
     alias: [ `ls` ],
     handler: (args, cb) => {
         console.log(get_list().

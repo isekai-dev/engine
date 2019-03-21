@@ -7,7 +7,7 @@ export default (classes) =>
                 indexOf(target) !== -1;
 
             if(!is_okay) {
-                console.log(`${target} is not an available [CLASS]`);
+                console.log(`${target} is not an available [CHARACTER]`);
             }
         
             return is_okay;

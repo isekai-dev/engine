@@ -5,13 +5,13 @@ import get_list from "../lib/get_list.js";
 import filter_list from "../lib/filter_list.js";
 
 export default ({
-    command: `build [CLASS...]`,
-    help: `build all [CLASS] files.`,
+    command: `build [CHARACTERS...]`,
+    help: `build all [CHARACTERS] files.`,
     autocomplete: get_list(),
     hidden: true,
-    handler: ({ CLASS = get_list() }) => 
-        filter_list(CLASS)(async (target) => {
-            const { build_info, name } = await toml_to_js(`./CLASS/${target}.toml`);
+    handler: ({ CHARACTERS = get_list() }) => 
+        filter_list(CHARACTERS)(async (target) => {
+            const { build_info, name } = await toml_to_js(`./CHARACTERS/${target}.toml`);
             const bundle = await rollup.rollup(build_info);
 
             /*
@@ -24,6 +24,6 @@ export default ({
             console.log(`[${name}] Build Complete.\r\n`);
         }).
             then((promises) => {
-                console.log(`Built ${promises.length} [CLASS] file(s).`);
+                console.log(`Built ${promises.length} [CHARACTER] file(s).`);
             })
 });

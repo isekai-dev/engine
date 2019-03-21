@@ -98,12 +98,8 @@ isekai.EQUIP({\r\n${keys}});`);
             
             console.log(`
 [${name}][${config.NODE ? `NODE` : `BROWSER`}]
-SHOP:
-${Object.keys(SKILLS).
-        map(log_equip).
-        join(` - `)}
 
-EQUIPPED:
+[SKILLS]:
 ${c.red(equiped.join(` - `))}
 `);
             

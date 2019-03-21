@@ -1,11 +1,11 @@
 import pm2 from "./pm2.js";
 
 export default ({
-    command: `logs [CLASS...]`,
+    command: `logs [CHARACTERS...]`,
     help: `follow the logs`,
-    handler: ({ CLASS = [] }) => 
+    handler: ({ CHARACTERS = [] }) => 
         new Promise(() => 
             pm2.handler({
-                commands: [ `logs`, ...CLASS ]
+                commands: [ `logs`, ...CHARACTERS ]
             }))
 });

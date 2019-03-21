@@ -1,12 +1,12 @@
 import pm2 from "./pm2.js";
 
 export default ({
-    command: `stop [CLASS...]`,
-    help: `stop active CLASS] files. `, 
+    command: `stop [CHARACTERS...]`,
+    help: `stop active CHARACTERS] files. `, 
 
-    handler: ({ CLASS = [ `all` ] }) => 
+    handler: ({ CHARACTERS = [ `all` ] }) => 
         pm2.handler({
-            commands: [ `delete`, ...CLASS ]
+            commands: [ `delete`, ...CHARACTERS ]
         })
 });
 

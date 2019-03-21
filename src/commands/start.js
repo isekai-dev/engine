@@ -5,12 +5,12 @@ import stop from "./stop.js";
 import get_list from "../lib/get_list.js";
 
 export default ({
-    command: `start [CLASS...]`,
-    help: `start and watch [CLASS] files`, 
+    command: `start [CHARACTERS...]`,
+    help: `start and watch [CHARACTERS] files`, 
     handler(data) { 
-        this.data = data.CLASS 
+        this.data = data.CHARACTERS 
             ? data
-            : { CLASS: get_list() };
+            : { CHARACTERS: get_list() };
 
         watch.handler(this.data);
         spawn.handler(this.data);
@@ -21,7 +21,7 @@ export default ({
     },
     cancel() {
         watch.cancel();
-        console.log(`STOPPING ${this.data.CLASS.map((i) => 
+        console.log(`STOPPING ${this.data.CHARACTERS.map((i) => 
             `[${i}]`).
             join(` - `)}`);
         

@@ -12,20 +12,20 @@ const watch_prompt = () =>
     console.log(`[BUILT] PRESS [CTRL+C] TO QUIT YOUR WATCH`);
 
 export default ({
-    command: `watch [CLASS...]`,
-    help: `watch [CLASS] files for changes and rebuild.`,
+    command: `watch [CHARACTERS...]`,
+    help: `watch [CHARACTER] files for changes and rebuild.`,
     hidden: true,
     cancel () {
         this.watchers.forEach((watcher) => 
             watcher.close());
         console.log(`YOUR WATCH HAS ENDED`);
     },
-    handler({ CLASS = get_list() }, cb) {
+    handler({ CHARACTERS = get_list() }, cb) {
         return new Promise((resolve) => {
             this.watchers = [];
             
-            filter_list(CLASS)((target) => {
-                const file_path = `./CLASS/${target}.toml`;
+            filter_list(CHARACTERS)((target) => {
+                const file_path = `./CHARACTERS/${target}.toml`;
 
                 const data = toml_to_js(file_path);
 
