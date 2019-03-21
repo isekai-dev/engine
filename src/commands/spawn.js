@@ -20,7 +20,10 @@ export default ({
             pm2.start({
                 name,
                 script: output,
-                watch: [ `./${output}` ],
+                watch: true,
+                watch_options: {
+                    usePolling: true
+                },
                 max_restart: 5 
             });
         });

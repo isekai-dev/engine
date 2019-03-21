@@ -90,9 +90,10 @@ const template = `
 </html>
 `;
 
-const power_words = (target) => target.
-    replace(/(\[.[^\]\[]*\])/ug, "<span class='power_word'>$1</span>").
-    replace("${server_restart}", `${last_restart.toLocaleString()} PDT`);
+const power_words = (target) => 
+    target.
+        replace(/(\[.[^\]\[]*\])/ug, `<span class='power_word'>$1</span>`).
+        replace(`\${server_restart}`, `${last_restart.toLocaleString()} PDT`);
 
 export default ({
     HTTP,
@@ -101,9 +102,9 @@ export default ({
     }
 }) => {
     const send_log = (req, res) => {
-        res.send(power_words(template.replace("<markdown/>", markdown)));
+        res.send(power_words(template.replace(`<markdown/>`, markdown)));
     };
 
-    HTTP.get("/log", send_log);
-    HTTP.get("/LOG", send_log);
+    HTTP.get(`/log`, send_log);
+    HTTP.get(`/LOG`, send_log);
 };

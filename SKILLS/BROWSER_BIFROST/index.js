@@ -1,7 +1,7 @@
 export default ({
-    set
+    SET
 }) => {
-    set({
+    SET({
         BROWSER_BIFROST: (path) => {
             const signal_sets = new Set();
         

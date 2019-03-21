@@ -14,9 +14,9 @@ const log_equip = (equip) =>
 export default (configFile) => 
     // Mix Config File in and run these in order
     Object.values({
-        gather_equipment: () => 
+        gather_SKILLS: () => 
             ({
-                EQUIPMENT: glob.sync(`./SHOP/*/`).
+                SKILLS: glob.sync(`./SKILLS/*/`).
                     reduce((obj, equip_path) => 
                         ({ 
                             [path.basename(equip_path)]: true,
@@ -64,7 +64,7 @@ export default (configFile) =>
         write_entry: ({
             config,
             name,
-            EQUIPMENT,
+            SKILLS,
         }) => {
         // WRITE OUT FILE
             let entry = ``;
@@ -78,9 +78,9 @@ export default (configFile) =>
     
             const equiped = Object.keys(config).
                 filter((key) => 
-                    key === key.toUpperCase() && EQUIPMENT[key]).
+                    key === key.toUpperCase() && SKILLS[key]).
                 map((key) => {
-                    write(`import ${key} from "../SHOP/${key}/index.js";`);
+                    write(`import ${key} from "../SKILLS/${key}/index.js";`);
 
                     return key;
                 });
@@ -99,7 +99,7 @@ isekai.EQUIP({\r\n${keys}});`);
             console.log(`
 [${name}][${config.NODE ? `NODE` : `BROWSER`}]
 SHOP:
-${Object.keys(EQUIPMENT).
+${Object.keys(SKILLS).
         map(log_equip).
         join(` - `)}
 

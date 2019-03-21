@@ -1,18 +1,15 @@
-
 import express from "express";
 import fs from "fs";
 
 import https from "https";
 import http from "http";
-import LOG_equip from "../LOG/index.js";
 
 export default ({
     LOG,
     HTTP: {
         ssl = false
     },
-    SET, 
-    EQUIP
+    SET
 }) => {
     const app = express();
 
@@ -49,7 +46,7 @@ export default ({
         app.listen(8080, () => {
             LOG.info(`⚠️[HTTP]⚠️`);
             LOG(`BIFROST INSECURE`);
-            LOG(`Listening on port 8080`);
+            LOG(`Listening on http://localhost:8080`);
         });
     }
     

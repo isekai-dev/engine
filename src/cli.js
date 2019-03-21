@@ -48,6 +48,7 @@ Object.entries(commands).
 
 const startup_commands = process.argv.slice(2);
 
+// TODO: isekai create foo instead of isekai "create foo"
 startup_commands.reduce((prev, cur) => 
     prev.then(() => 
         v.exec(cur)), Promise.resolve()
@@ -56,7 +57,7 @@ startup_commands.reduce((prev, cur) =>
         if(startup_commands.length > 0) {
             return;
         }
-        
+
         v.delimiter(chalk.bold.green(`>`)).
             show();
     });

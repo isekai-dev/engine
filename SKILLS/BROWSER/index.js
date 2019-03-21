@@ -7,5 +7,5 @@ export default ({
         BROWSER: {
             keys, 
         }
-    })
-}
+    });
+};

@@ -1,11 +1,13 @@
 
-const addListeners = (object) => Object.entries(object).map(([ evt, handler ]) => {
-    window.addEventListener(evt, handler);
+const addListeners = (object) => 
+    Object.entries(object).
+        map(([ evt, handler ]) => {
+            window.addEventListener(evt, handler);
 
-    return () => {
-        window.removeEventListener(evt, handler);
-    };
-});
+            return () => {
+                window.removeEventListener(evt, handler);
+            };
+        });
 
 const keys = {
 
@@ -24,7 +26,8 @@ addListeners({
     },
     keypress: ({ which }) => {
 
-        global_handlers.forEach((handler) => handler(which));
+        global_handlers.forEach((handler) => 
+            handler(which));
         
         const handlers = handlerMap.get(which);
 
@@ -32,7 +35,8 @@ addListeners({
             return;
         }
 
-        handlers.forEach((handler) => handler(which));
+        handlers.forEach((handler) => 
+            handler(which));
     }
 });
 
