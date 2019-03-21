@@ -1,4 +1,4 @@
-import watcher from "chokidar";
+import chokidar from "chokidar";
 import rollup from "rollup";
 import c from "chalk";
 
@@ -8,38 +8,59 @@ import action from "../lib/action.js";
 import filter_list from "../lib/filter_list.js";
 import get_list from "../lib/get_list.js";
 
+const watch_prompt = () => 
+    console.log(`PRESS [CTRL+C] TO QUIT YOUR WATCH`);
+
 export default ({
     command: `watch [classes...]`,
     help: `watch [CLASS] files for changes and rebuild.`,
-    handler: ({ classes = get_list() }, cb) =>
-        filter_list(classes)((target) => {
-            const data = toml_to_js(`./CLASS/${target}.toml`);
+    hidden: true,
+    cancel () {
+        this.watchers.forEach((watcher) => 
+            watcher.close());
+        console.log(`WATCH STOPPED`);
+    },
+    handler({ classes = get_list() }, cb) {
+        watch_prompt();
 
-            const { build_info } = data;
+        return new Promise((resolve) => {
+            this.watchers = [];
+            
+            filter_list(classes)((target) => {
+                const file_path = `./CLASS/${target}.toml`;
+
+                const data = toml_to_js(file_path);
+
+                const { build_info } = data;
         
-            // rebuild on file chagne
-            watcher.watch(target).
-                on(`change`, () => {
-                    toml_to_js(target);
+                // rebuild on file chagne
+                const watcher = chokidar.watch(file_path);
+                
+                watcher.on(`change`, () => {
+                    toml_to_js(file_path);
                 });
+                
+                this.watchers.push(watcher);
 
-            rollup.watch({
-                ...build_info,
-                watch: {
-                    clearScreen: true
-                }   
-            }).
-                on(`event`, action({
-                    BUNDLE_END: () => {
-                        console.log(`[BUILD DONE]`);
-                    },
-                    FATAL: ({ error }) => {
-                        console.error(c.red.bold(error));
-                    }
-                }, ({ code }) => 
-                    code 
-                ));
+                const rollup_watcher = rollup.watch({
+                    ...build_info,
+                    watch: {
+                        clearScreen: true
+                    }   
+                }).
+                    on(`event`, action({
+                        BUNDLE_END: () => {
+                            watch_prompt();
+                        },
+                        FATAL: ({ error }) => {
+                            console.error(c.red.bold(error));
+                        }
+                    }, ({ code }) => 
+                        code 
+                    ));
 
-            return data;
-        })
+                this.watchers.push(rollup_watcher);
+            });
+        });
+    }
 });

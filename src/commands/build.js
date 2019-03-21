@@ -8,6 +8,7 @@ export default ({
     command: `build [classes...]`,
     help: `build all [CLASS] files.`,
     autocomplete: get_list(),
+    hidden: true,
     handler: ({ classes = get_list() }) => 
         filter_list(classes)(async (target) => {
             const { build_info, name } = await toml_to_js(`./CLASS/${target}.toml`);

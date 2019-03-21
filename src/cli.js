@@ -26,12 +26,22 @@ Object.entries(commands).
         name, {
             help,
             handler,
-            autocomplete
+            autocomplete,
+            hidden,
+            alias = [],
+            cancel = () => {}
         }
-    ]) => 
-        v.command(name, help).
+    ]) => { 
+        const command = v.command(name, help).
+            alias(alias).
             autocomplete(autocomplete || []).
-            action(handler));
+            cancel(cancel).
+            action(handler);
+
+        if(hidden) {
+            command.hidden();
+        }
+    });
 
 v.delimiter(chalk.bold.green(`>`)).
     show();
