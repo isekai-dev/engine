@@ -1,0 +1,1 @@
+offer the CLI up over the /admin pipes!

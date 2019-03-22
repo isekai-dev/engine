@@ -5,9 +5,9 @@ import exec from "./pm2.js";
 import get_list from "../lib/get_list.js";
 
 export default ({
-    command: `start [CHARACTERS...]`,
-    help: `start and watch [CHARACTERS] files`,
-    alias: [ `dev` ],
+    command: `run [...CHARACTERs]`,
+    help: `run and watch [CHARACTER] files`,
+    alias: [ `dev`, `start` ],
     handler(data) { 
         this.data = data.CHARACTERS 
             ? data

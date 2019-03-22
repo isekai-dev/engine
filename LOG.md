@@ -3,7 +3,6 @@
         <img src="./logo.gif" alt="logo" />
     </a>
 </p>
-
 <p align="center" class="center">
     <a href="https://travis-ci.org/isekai-dev/engine">
         <img src="https://img.shields.io/travis/isekai-dev/engine.svg?style=for-the-badge" alt="build status"/>
@@ -13,6 +12,9 @@
     </a>
     <a href="https://isekai.dev/log">
         <img src="https://img.shields.io/badge/DEV%20LOG-ONLINE-green.svg?style=for-the-badge" alt="dev log"/>
+    </a>
+    <a href="http://github.com/isekai-dev/engine">
+        <img src="https://img.shields.io/badge/GITHUB-SOURCECODE-blue.svg?style=for-the-badge" alt="source code"/>
     </a>
     <a href="./LICENSE">
         <img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=for-the-badge" alt="license"/>
@@ -30,20 +32,35 @@ SINCE: ${server_restart}
 ```
  [http://twitch.tv/InAStrangeMood]()
 
+# THE MARCH TOWARDS A BRIGHTER FUTURE
+## [3/22/2019] [NOPE] [BOSE HEADPHONES THOUGH]
+
+New website http://isekai.dev should be up any time now. I'm using it as the test case for the [ISEKAI] engine. This was a huge bump in the road for goblin.life but it'll be okay.
+
+    [THEME][ISEKAI]
+Can provide a JSON file that is the same as the VS CODE generate color for your ADMIN interface/ maybe UI?.
+
+    [ISEKAI][??][STANDALONE]
+Should I provide an Isekai standalone executable? Would it just be electron? I think so?
+
+    [ISEKAI][ADMIN]
+Provide an admin interface that is the isekai CLI somehow? Anyhow, this would feed into the electron APP. Could do som eneat things like opening tables/resources in their own cyberpunk style pop ups. heh.
+
+    [ISEKAI][BROWSER]
+Need to get the browser builds working so I can do some svelte pages of the ADMIN
+
+    [ISEKAI.DEV]
+Get website up and running. I should probably just do this now w/ a bad update loop.... okay.
+
 # THE GLORIOUS FRUITS OF REWARD
 ## [3/20/2019] [🎶🎧 - Infinite Happiness]
 
-    [ISEKAI*ENGINE][!]
-Done, fucking done. New website up at http://isekai.dev with the log. Running on [Isekai*Engine]. JFC though, I spent three days on "feature flags" and implemented a highly configurable/shareable engine instead. I guess it was worth it?
-
-
+Didn't happen.
 
 # THE GLORIOUS FRUITS OF DISAPPOINTMENT
 ## [3/19/2019] [🎶🎧 - Infinite Sadness]
     [ISEKAI*ENGINE][!]
 CLI is working. Can npm i -g @isekai/engine and the run isekai build/etc. Nothing is running on top of it yet.
-
-
 
 # HOLY CRAP IS THIS HARD
 ## [3/18/2019] [🎶🎧 - Infinite Sadness]

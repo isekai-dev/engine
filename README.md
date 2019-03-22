@@ -13,6 +13,9 @@
     <a href="https://isekai.dev/log">
         <img src="https://img.shields.io/badge/DEV%20LOG-ONLINE-green.svg?style=for-the-badge" alt="dev log"/>
     </a>
+    <a href="http://github.com/isekai-dev/engine">
+        <img src="https://img.shields.io/badge/GITHUB-SOURCECODE-blue.svg?style=for-the-badge" alt="source code"/>
+    </a>
     <a href="./LICENSE">
         <img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=for-the-badge" alt="license"/>
     </a>

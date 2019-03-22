@@ -14,9 +14,11 @@ port = 8080
 public = "/"
 
 [HTTP_MARKDOWN."/log"]
-markdown = "LOG.md"
+markdown = "../LOG.md"
 template = "log.template.html"
 
 [HTTP_MARKDOWN."/"]
 markdown = "../README.md"
 template = "log.template.html"
+ 
+[HTTP_ADMIN]
