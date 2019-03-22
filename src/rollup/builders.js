@@ -131,7 +131,7 @@ const browser = ({
             production && terser(),
             do_copy(copyObject),
             version({
-                path: `./.MAGIC/client.version`,
+                path: `./.BIN/client.version`,
                 version: () => 
                     CLIENT_VERSION
             })

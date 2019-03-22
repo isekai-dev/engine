@@ -5,13 +5,13 @@ import get_list from "../lib/get_list.js";
 import filter_list from "../lib/filter_list.js";
 
 export default ({
-    command: `build [CHARACTERS...]`,
-    help: `build all [CHARACTER] save(s).`,
+    command: `build [AVATARS...]`,
+    help: `build all [AVATAR] save(s).`,
     autocomplete: get_list(),
     hidden: true,
-    handler: ({ CHARACTERS = get_list() }) => 
-        filter_list(CHARACTERS)(async (target) => {
-            const { build_info, name } = await toml_to_js(`./CHARACTERS/${target}.toml`);
+    handler: ({ AVATARS = get_list() }) => 
+        filter_list(AVATARS)(async (target) => {
+            const { build_info, name } = await toml_to_js(`./AVATARS/${target}.toml`);
             const bundle = await rollup.rollup(build_info);
 
             /*
@@ -24,6 +24,6 @@ export default ({
             console.log(`[${name}] Build Complete.\r\n`);
         }).
             then((promises) => {
-                console.log(`Built ${promises.length} [CHARACTER] save(s).`);
+                console.log(`Built ${promises.length} [AVATAR](s).`);
             })
 });

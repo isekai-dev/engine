@@ -7,7 +7,7 @@ export default [
         input: `src/cli.js`,
         output: {
             sourcemap: `inline`,
-            file: `.MAGIC/cli.js`,
+            file: `.BIN/cli.js`,
             format: `cjs`,
         },
         plugins: [ hashbang(), glob(), json() ]
@@ -15,7 +15,7 @@ export default [
         input: `src/isekai.js`,
         output: {
             sourcemap: `inline`,
-            file: `.MAGIC/isekai.js`,
+            file: `.BIN/isekai.js`,
             format: `cjs`
         }
     }

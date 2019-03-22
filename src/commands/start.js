@@ -5,13 +5,13 @@ import exec from "./pm2.js";
 import get_list from "../lib/get_list.js";
 
 export default ({
-    command: `run [...CHARACTERs]`,
-    help: `run and watch [CHARACTER] files`,
+    command: `run [...AVATARs]`,
+    help: `run and watch [AVATAR] files`,
     alias: [ `dev`, `start` ],
     handler(data) { 
-        this.data = data.CHARACTERS 
+        this.data = data.AVATARS 
             ? data
-            : { CHARACTERS: get_list() };
+            : { AVATARS: get_list() };
 
         watch.handler(this.data);
         spawn.handler(this.data);

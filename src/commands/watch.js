@@ -12,8 +12,8 @@ const watch_prompt = () =>
     console.log(`[BUILT] PRESS [CTRL+C] TO QUIT YOUR WATCH`);
 
 export default ({
-    command: `load [CHARACTERS...]`,
-    help: `load [CHARACTER] saves`,
+    command: `load [AVATARS...]`,
+    help: `load [AVATAR] saves`,
     alias: [ `regenerate`, `recreate`, `watch` ],
     hidden: true,
     cancel () {
@@ -21,12 +21,12 @@ export default ({
             watcher.close());
         console.log(`YOUR WATCH HAS ENDED`);
     },
-    handler({ CHARACTERS = get_list() }, cb) {
+    handler({ AVATARS = get_list() }, cb) {
         return new Promise((resolve) => {
             this.watchers = [];
             
-            filter_list(CHARACTERS)((target) => {
-                const file_path = `./CHARACTERS/${target}.toml`;
+            filter_list(AVATARS)((target) => {
+                const file_path = `./AVATARS/${target}.toml`;
 
                 const data = toml_to_js(file_path);
 

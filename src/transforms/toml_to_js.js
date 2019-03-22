@@ -91,7 +91,7 @@ export default (configFile) =>
             write(`
 isekai.EQUIP({\r\n${keys}});`);
 
-            const input = path.join(`.MAGIC`, `${name}.entry.js`);
+            const input = path.join(`.BIN`, `${name}.entry.js`);
 
             // write out their index.js
             fs.writeFileSync(input, entry, `utf-8`);
@@ -117,7 +117,7 @@ ${c.blueBright(equiped.join(` - `))}
                 ? `NODE` 
                 : `BROWSER`;
 
-            const output = `.MAGIC/${name}.${target}.js`;
+            const output = `.BIN/${name}.${target}.js`;
 
             if(config.NODE && config.BROWSER) {
                 throw new Error(`You cannot target both [NODE] and [BROWSER]`);

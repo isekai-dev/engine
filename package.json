@@ -2,15 +2,15 @@
   "name": "isekai",
   "version": "0.0.2",
   "description": "A Stranger in a Strange Land",
-  "main": ".MAGIC/isekai.js",
+  "main": ".BIN/isekai.js",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c --watch",
     "test": "./node_modules/.bin/mocha --require @babel/register",
-    "start": "node ./.MAGIC/cli.js"
+    "start": "node ./.BIN/cli.js"
   },
   "bin": {
-    "isekai": ".MAGIC/cli.js"
+    "isekai": ".BIN/cli.js"
   },
   "homepage": "https://isekai.dev",
   "repository": {

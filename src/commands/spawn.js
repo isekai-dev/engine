@@ -6,16 +6,16 @@ import filter_list from "../lib/filter_list.js";
 
 
 export default ({
-    commander: `spawn [CHARACTERS...]`,
-    help: `spawn [CHARACTERS] files`,
+    commander: `spawn [AVATARS...]`,
+    help: `spawn [AVATARS] files`,
     hidden: true,
     handler: ({
-        CHARACTERS = get_list()
+        AVATARS = get_list()
     }) => {
-        filter_list(CHARACTERS)((name) => {
+        filter_list(AVATARS)((name) => {
             const {
                 output,
-            } = toml_to_js(`./CHARACTERS/${name}.toml`);
+            } = toml_to_js(`./AVATARS/${name}.toml`);
 
             pm2.start({
                 name,
