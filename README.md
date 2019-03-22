@@ -1,14 +1,17 @@
-
-<p align="center">
+<p align="center" class="center">
     <a href="http://isekai.dev">
-        <img src="./ITEMS/HTTP_PUBLIC/logo.gif" alt="logo" />
+        <img src="./logo.gif" alt="logo" />
     </a>
-    <br />
+</p>
+<p align="center" class="center">
     <a href="https://travis-ci.org/isekai-dev/engine">
         <img src="https://img.shields.io/travis/isekai-dev/engine.svg?style=for-the-badge" alt="build status"/>
     </a>
     <a href="https://isekai.dev">
         <img src="https://img.shields.io/website/https/isekai.dev.svg?style=for-the-badge" alt="website">
+    </a>
+    <a href="https://isekai.dev/log">
+        <img src="https://img.shields.io/badge/DEV%20LOG-ONLINE-green.svg?style=for-the-badge" alt="dev log"/>
     </a>
     <a href="./LICENSE">
         <img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=for-the-badge" alt="license"/>
@@ -18,12 +21,12 @@
     </a>
 </p>
 
-A different World.
+# QUICK START
+##
 
-## QUICK START
 Requires node.js to be installed.
 
-```
+```sh
 npm install -g isekai
 
 isekai create <NAME OF YOUR WORLD>
@@ -32,14 +35,17 @@ isekai run <NAME OF YOUR WORLD>
 
 Your world awaits at [http://localhost:8080]().
 
-## TIPS AND TRICKS
+# TIPS AND TRICKS
+##
 
 Navigate to [http://localhost:8080/admin]() to play God with your world.
 
 Your DATA directory can override anything in BIN/DATA. Use this to mod graphics and stuff.
 
 
-## BUT WHAT DOES IT DO?
+# BUT WHAT DOES IT DO?
+##
+
 Isekai turns configuration TOML files into executable javascript bundles for either node or the browser.
 
 ex:
@@ -58,8 +64,8 @@ port = 8080
 # file = "README.md"
 # template = "default.html
 ```
-
 into
+
 ```js
 import isekai from "isekai";
 isekai.SET({"NODE":{},"LOG":{},"HTTP":{"port":8080},"HTTP_API":{},"HTTP_PUBLIC":{}});
@@ -90,7 +96,8 @@ export default ({
 };
 ```
 
-## BUT WHAT DOES IT REALLY DO?
+# BUT WHAT DOES IT REALLY DO?
+##
 
 isekai.js
 ```js

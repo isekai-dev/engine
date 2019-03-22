@@ -1,10 +1,30 @@
+<p align="center" class="center">
+    <a href="http://isekai.dev">
+        <img src="./logo.gif" alt="logo" />
+    </a>
+</p>
+
+<p align="center" class="center">
+    <a href="https://travis-ci.org/isekai-dev/engine">
+        <img src="https://img.shields.io/travis/isekai-dev/engine.svg?style=for-the-badge" alt="build status"/>
+    </a>
+    <a href="https://isekai.dev">
+        <img src="https://img.shields.io/website/https/isekai.dev.svg?style=for-the-badge" alt="website">
+    </a>
+    <a href="https://isekai.dev/log">
+        <img src="https://img.shields.io/badge/DEV%20LOG-ONLINE-green.svg?style=for-the-badge" alt="dev log"/>
+    </a>
+    <a href="./LICENSE">
+        <img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=for-the-badge" alt="license"/>
+    </a>
+    <a href="https://discord.gg/kc2nsTc">
+        <img src="https://img.shields.io/discord/558071350304964640.svg?style=for-the-badge" alt="discord chat">
+    </a>
+</p>
+
+# Deets
+##
 ```
-██╗███████╗███████╗██╗  ██╗ █████╗ ██╗      ███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗    
-██║██╔════╝██╔════╝██║ ██╔╝██╔══██╗██║▄ ██╗▄██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝    
-██║███████╗█████╗  █████╔╝ ███████║██║ ████╗█████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗      
-██║╚════██║██╔══╝  ██╔═██╗ ██╔══██║██║▀╚██╔▀██╔══╝  ██║╚██╗██║██║   ██║██║██║╚██╗██║██╔══╝      
-██║███████║███████╗██║  ██╗██║  ██║██║  ╚═╝ ███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗    
-╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝      ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝    
 VERSION: ${version}  
 SINCE: ${server_restart}
 ```

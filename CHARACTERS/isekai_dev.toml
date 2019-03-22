@@ -1,18 +1,22 @@
 [NODE]
-# [LOG]
+
 [HTTP]
 port = 8080
 
-# [HTTP_API]
+# [HTTP.SSL]
+# agreeTos = true
+# email = "agoblinking@isekai.dev"
+# approvedDomains = ["isekai.dev"]
+# ssl_port = 443
+# redirect = 80
+
 [HTTP_STATIC]
 public = "/"
 
-[HTTP_MARKDOWN."/"]
+[HTTP_MARKDOWN."/log"]
 markdown = "LOG.md"
 template = "log.template.html"
 
-# [[HTTP_MD]]
-# path = "/"
-# file = "README.md"
-# template = "default.html
-
+[HTTP_MARKDOWN."/"]
+markdown = "../README.md"
+template = "log.template.html"
