@@ -1,6 +1,7 @@
 // pipe out to pm2
 import { spawn } from "child_process";
 
+// TODO: MOve out of commands
 export default ({
     command: `pm2 [commands...]`,
 

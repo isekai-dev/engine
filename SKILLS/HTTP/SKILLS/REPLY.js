@@ -1,8 +1,11 @@
 export default ({
-    HTTP,
-    HTTP_REPLY
+    HTTP
 }) => {
-    Object.entries(HTTP_REPLY).
+    const {
+        REPLY = {}
+    } = HTTP;
+
+    Object.entries(REPLY).
         forEach(([ path, response ]) => 
             HTTP.get(path, (res) => 
                 res.send(response))

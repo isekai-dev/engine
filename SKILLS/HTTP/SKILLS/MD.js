@@ -2,7 +2,7 @@ import fs from "fs";
 import commonmark from "commonmark";
 import chokidar from "chokidar";
 
-import { version } from "../../package.json";
+import { version } from "../../../package.json";
 
 const last_restart = new Date();
 const power_words = (target) => 
@@ -25,17 +25,20 @@ const make_data = ([ markdown, template ]) => {
 
 export default ({
     HTTP,
-    HTTP_MARKDOWN
 }) => {
-    Object.entries(HTTP_MARKDOWN).
+    const {
+        MARKDOWN = []
+    } = HTTP;
+
+    Object.entries(MARKDOWN).
         forEach(([ 
             path, {
                 markdown,
                 template
             } 
         ]) => {
-            console.log(`[HTTP_MARKDOWN] ${markdown} :> ${path}`);
-            const paths = [ `./ITEMS/${markdown}`, `./ITEMS/${template}` ];
+            console.log(`[HTTP.MARKDOWN] ${markdown} :> ${path}`);
+            const paths = [ `./DATA/${markdown}`, `./DATA/${template}` ];
 
             let data = make_data(paths);
 
@@ -44,7 +47,7 @@ export default ({
             }).
                 on(`change`, () => {
                     data = make_data(paths);
-                    console.log(`[HTTP_MARKDOWN] UPDATED ${markdown} :> ${path}`);
+                    console.log(`[HTTP.MARKDOWN] UPDATED ${markdown} :> ${path}`);
                 });
 
             HTTP.get(path, (req, res) => {
@@ -52,3 +55,4 @@ export default ({
             });
         });
 };
+

@@ -68,7 +68,9 @@ export default (configFile) =>
         }) => {
         // WRITE OUT FILE
             let entry = ``;
-            
+            const type = config.NODE ? `node` : `browser`;
+
+
             const write = (data) => 
                 entry += `${data}\r\n`;
         
@@ -80,7 +82,7 @@ export default (configFile) =>
                 filter((key) => 
                     key === key.toUpperCase() && SKILLS[key]).
                 map((key) => {
-                    write(`import ${key} from "../SKILLS/${key}/index.js";`);
+                    write(`import ${key} from "../SKILLS/${key}/${type}.js";`);
 
                     return key;
                 });
@@ -97,7 +99,7 @@ isekai.EQUIP({\r\n${keys}});`);
             fs.writeFileSync(input, entry, `utf-8`);
             
             console.log(`
-[${name}][${config.NODE ? `NODE` : `BROWSER`}]
+[${name}][${type}]
 
 [SKILLS]:
 ${c.blueBright(equiped.join(` - `))}

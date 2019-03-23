@@ -1,5 +1,4 @@
 import toml from "rollup-plugin-toml";
-import alias from 'rollup-plugin-alias';
 import svelte from "rollup-plugin-svelte";
 import resolve from "rollup-plugin-node-resolve";
 import copy from "rollup-plugin-copy-glob";
@@ -49,8 +48,6 @@ const node = ({
     copy: copyObject = {}
 }) => 
     ({
-        onwarn: () => {
-        },
         input,
         output: {
             sourcemap: `inline`,
@@ -59,9 +56,6 @@ const node = ({
         },
         external,
         plugins: [
-            alias({
-                isekai: `./MAGIC/isekai.js`
-            }),
             glob(),
             replace({
                 CODE_VERSION,
@@ -80,8 +74,6 @@ const browser = ({
     copy: copyObject,
 }) => 
     ({
-        onwarn: () => {
-        },
         input,
         output: {
             file: output,
@@ -107,9 +99,6 @@ const browser = ({
         //         },
         //         customTemplate: texturePacker
         //     }),
-            alias({
-                isekai: `./MAGIC/isekai`
-            }),
             glob(),
             cjs({
                 include: `node_modules/**`, 

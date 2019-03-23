@@ -52,6 +52,54 @@ Need to get the browser builds working so I can do some svelte pages of the ADMI
     [ISEKAI.DEV]
 Get website up and running. I should probably just do this now w/ a bad update loop.... okay.
 
+    [SHOP]
+A way of getting sets of other SKILLS/DATA/AVATARS. (uses npm and like @isekai/awesome which is a list of awesome skills/data/avatars for Isekai.
+
+    [ISEKAI][CLI]
+```
+npm install -g isekai
+
+isekai create/init
+  - degit template 
+  - git init
+  - git add .
+  - git commit -m "Created" + "template"
+
+isekai commit "did some stuff"
+  - git add .
+  - git commit -m "did some stuff"
+
+isekai publish @isekai/website
+  - warn about any commits
+  - set name to whatever they published as
+  - git push origin master
+
+isekai install
+  - npm install
+
+isekai install @isekai/website 
+  - npm install git url @isekai/website
+
+isekai start
+  - start local avatars
+  
+isekai start @isekai/website
+  - build @isekai/website
+  - pm2 start node @isekai/website
+
+isekai stop 
+
+isekai stop @isekai/website
+
+isekai build
+isekai autobuild
+ 
+isekai status
+isekai logs
+isekai  
+```
+Wrap up commands so you don't have to 
+
 # THE GLORIOUS FRUITS OF REWARD
 ## [3/20/2019] [🎶🎧 - Infinite Happiness]
 

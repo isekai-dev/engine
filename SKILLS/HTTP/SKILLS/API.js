@@ -6,6 +6,9 @@ export default ({
     SET
 }) => {
     SET({
-        HTTP_API: HTTP.use(express.json())
+        HTTP: { 
+            ...HTTP,
+            API: HTTP.use(express.json())
+        }
     });
 };
