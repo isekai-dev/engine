@@ -33,8 +33,9 @@ Requires node.js to be installed.
 ```sh
 npm install -g isekai
 
-isekai create <NAME OF YOUR WORLD>
-isekai run <NAME OF YOUR WORLD>
+cd my_project
+isekai init
+isekai start
 ```
 
 Your world awaits at [http://localhost:8080]().
@@ -51,8 +52,6 @@ Your DATA directory can override anything in BIN/DATA. Use this to mod graphics 
 ##
 
 Isekai turns configuration TOML files into executable javascript bundles for either node or the browser.
-
-
 
 ex:
 

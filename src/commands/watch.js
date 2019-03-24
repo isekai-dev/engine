@@ -46,6 +46,9 @@ export default ({
                     }   
                 }).
                     on(`event`, action({
+                        ERROR: (e) => {
+                            console.log(e);
+                        },
                         BUNDLE_END: () => {
                             watch_prompt();
                         },

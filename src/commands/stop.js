@@ -16,7 +16,7 @@ export default ({
         console.log(`STOPPING ${whom}`);
 
         const { cancel, done } = pm2({
-            commands: [ `delete`, ...AVATARS ]
+            commands: [ `delete`, `all` ]
         });
 
         this.canceler = cancel;

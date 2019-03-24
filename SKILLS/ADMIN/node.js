@@ -1,16 +1,25 @@
-import niceware from "niceware";
+import { exec } from "child_process";
+
 
 export default ({
-    HTTP,
-    HTTP_ADMIN: {
-        pass_strength = 8,
-        pass_phrase,
-        path = `/isekai`
+    ZALGO,
+    ADMIN: {
+        zalgo,
     }
 }) => {
-    if(!pass_phrase) {
-        pass_phrase = niceware.generatePassphrase(pass_strength);
-        console.log(`ADMIN ZALGO: ${pass_phrase.
-            join(` `)}`);
+    const admin_zalgo = ZALGO({
+        zalgo,
+        strength: 18,
+        handler: () => {
+            exec(`npx isekai pull`);
+            
+            return {
+                restart: true
+            };
+        }
+    });
+
+    if(!zalgo) {
+        console.log(`ADMIN ZALGO: ${admin_zalgo}`);
     }
 };

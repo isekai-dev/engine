@@ -7,6 +7,7 @@ import { version } from "../package.json";
 import "./lib/format.js";
 
 import chalk from "chalk";
+import { start } from "pm2";
 
 const v = vorpal();
 
@@ -19,6 +20,7 @@ Object.entries(commands).
             hidden,
             command,
             alias = [],
+            options = {},
             cancel = () => {}
         }
     ]) => { 
@@ -31,23 +33,22 @@ Object.entries(commands).
         if(hidden) {
             ist.hidden();
         }
+
+        Object.entries(options).
+            forEach(([ option, option_help ]) => {
+                ist.option(option, option_help);
+            });
     });
 
 const startup_commands = process.argv.slice(2);
 
-// TODO: isekai create foo instead of isekai "create foo"
-startup_commands.reduce((prev, cur) => 
-    prev.then(() => 
-        v.exec(cur)), Promise.resolve()
-).
-    then(() => {
-        if(startup_commands.length > 0) {
-            return;
-        }
+if(startup_commands.length > 0) {
+    v.exec(startup_commands.join(` `));
+} else {
 
-        process.stdout.write(`\x1Bc`);
+    process.stdout.write(`\x1Bc`);
 
-        console.log(chalk.green(`
+    console.log(chalk.green(`
 ██╗███████╗███████╗██╗  ██╗ █████╗ ██╗      ███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗    
 ██║██╔════╝██╔════╝██║ ██╔╝██╔══██╗██║▄ ██╗▄██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝    
 ██║███████╗█████╗  █████╔╝ ███████║██║ ████╗█████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗      
@@ -57,7 +58,6 @@ startup_commands.reduce((prev, cur) =>
 VERSION: ${version}                                                                                         
 `));
 
-        v.delimiter(chalk.bold.green(`>`)).
-            show();
-    });
-
+    v.delimiter(chalk.bold.green(`>`)).
+        show();
+}
