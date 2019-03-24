@@ -13,15 +13,15 @@ export default ({
 }) => EQUIP({
     HTTP: ({
         HTTP: {
-            ssl = false,
+            SSL = false,
             port = 8080
         },
         SET,
     }) => {
         const app = express();
         app.use(helmet());
-        
-        if(ssl) {
+
+        if(SSL) {
             const {
                 agreeTos,
                 email,
@@ -31,7 +31,7 @@ export default ({
                 telemetry = false,
                 ssl_port = 443,
                 redirect = 80
-            } = ssl;
+            } = SSL;
         
             if(!agreeTos || !email || !approvedDomains) {
                 const not_filled = Object.entries({ 
@@ -55,26 +55,32 @@ export default ({
                 approvedDomains,
                 app,
             }).
-                listen(ssl_port, () => {
-                    console.log(`[HTTPS]`);
-                    console.log(`BIFROST SECURED`);
-                });
+                listen(redirect, ssl_port);
         
+
+            console.log(`[HTTPS]`);
+            console.log(`BIFROST SECURED`);
                 
-            if(redirect) {
-                const redirectApp = express();
+            /*
+             * if(redirect) {
+             *     const redirectApp = express();
+             */
             
-                console.log(`Redirecting to HTTP to HTTPS`);
+            //     console.log(`Redirecting to HTTP to HTTPS`);
         
-                redirectApp.all(`*`, (req, res) => {  
-                    res.redirect(`https://${req.headers.host}${req.url}`);
-                    res.end();
-                });
+            /*
+             *     redirectApp.all(`*`, (req, res) => {  
+             *         res.redirect(`https://${req.headers.host}${req.url}`);
+             *         res.end();
+             *     });
+             */
         
-                http.createServer(redirectApp).
-                    listen(redirect);
+            /*
+             *     http.createServer(redirectApp).
+             *         listen(redirect);
+             */
         
-            }
+            // }
         
         } else {
             app.listen(port, () => {
