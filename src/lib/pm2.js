@@ -1,8 +1,12 @@
 // pipe out to pm2
 import { spawn } from "child_process";
+import path from "path";
+
+const pm2_path = path.dirname(require.resolve(`pm2`));
 
 export default ({ commands }) => {
-    let node = spawn(`node`, `${__dirname}/../node_modules/pm2/bin/pm2 ${commands.join(` `)}`.split(` `), {
+    let node = spawn(`node`, `${pm2_path}/bin/pm2 ${commands.join(` `)}`.split(` `), {
+        cwd: process.cwd(),
         env: process.env,
         stdio: `inherit`
     });

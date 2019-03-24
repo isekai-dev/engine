@@ -1,6 +1,6 @@
 {
   "name": "isekai",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "A Stranger in a Strange Land",
   "main": ".BIN/isekai.js",
   "scripts": {
@@ -31,8 +31,18 @@
     "mocha": "^6.0.2"
   },
   "dependencies": {
+    "@octokit/webhooks": "^5.3.3",
+    "chalk": "^2.4.2",
+    "chokidar": "^2.1.2",
+    "commonmark": "^0.28.1",
+    "degit": "^2.1.3",
+    "express": "^4.16.4",
     "glob": "^7.1.2",
+    "greenlock-express": "^2.6.8",
+    "inquirer": "^6.2.2",
     "md5": "^2.2.1",
+    "niceware": "^1.0.6",
+    "pm2": "^3.4.0",
     "rollup": "^1.3.3",
     "rollup-copy-plugin": "^0.1.0",
     "rollup-plugin-commonjs": "^9.2.1",
@@ -51,16 +61,6 @@
     "spritesmith-texturepacker": "^1.0.0",
     "svelte": "^3.0.0-beta.20",
     "toml": "^3.0.0",
-    "@octokit/webhooks": "^5.3.3",
-    "chalk": "^2.4.2",
-    "chokidar": "^2.1.2",
-    "commonmark": "^0.28.1",
-    "degit": "^2.1.3",
-    "express": "^4.16.4",
-    "greenlock-express": "^2.6.8",
-    "inquirer": "^6.2.2",
-    "niceware": "^1.0.6",
-    "pm2": "^3.4.0",
     "uuid": "^3.3.2",
     "vorpal": "^1.12.0",
     "yargs": "^13.2.2"

@@ -8,8 +8,7 @@ import action from "../lib/action.js";
 import filter_list from "../lib/filter_list.js";
 import get_list from "../lib/get_list.js";
 
-const watch_prompt = () => 
-    console.log(`[BUILT] PRESS [CTRL+C] TO QUIT YOUR WATCH`);
+const watch_prompt = () => console.log(`[BUILT] PRESS [CTRL+C] TO QUIT YOUR WATCH`);
 
 export default ({
     command: `load [AVATARS...]`,
@@ -17,8 +16,7 @@ export default ({
     alias: [ `regenerate`, `recreate`, `watch` ],
     hidden: true,
     cancel () {
-        this.watchers.forEach((watcher) => 
-            watcher.close());
+        this.watchers.forEach((watcher) => watcher.close());
         console.log(`YOUR WATCH HAS ENDED`);
     },
     handler({ AVATARS = get_list() }, cb) {
@@ -54,8 +52,7 @@ export default ({
                         FATAL: ({ error }) => {
                             console.error(c.red.bold(error));
                         }
-                    }, ({ code }) => 
-                        code 
+                    }, ({ code }) => code 
                     ));
 
                 this.watchers.push(rollup_watcher);

@@ -15,7 +15,6 @@ const glob_obj = (glob_path) => glob.sync(glob_path).
             // prevents hijacking
             throw new Error(`${skill_name} from ${project_name} overlaps ${obj[skill_name]}`);
         }
-        console.log(skill_name);
         
         return { 
             [skill_name]: `../node_modules/${project_name}`,
@@ -72,7 +71,6 @@ export default (configFile) => Object.values({
         SKILLS,
         SHOP
     }) => {
-        console.log(`SHOP`, SHOP);
         // WRITE OUT FILE
         let entry = ``;
         const type = config.NODE 

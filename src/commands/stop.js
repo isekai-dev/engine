@@ -1,4 +1,4 @@
-import exec from "../lib/exec.js";
+import pm2 from "../lib/pm2.js";
 import get_list from "../lib/get_list.js";
 
 export default ({
@@ -15,7 +15,7 @@ export default ({
 
         console.log(`STOPPING ${whom}`);
 
-        const { cancel, done } = exec({
+        const { cancel, done } = pm2({
             commands: [ `delete`, ...AVATARS ]
         });
 
