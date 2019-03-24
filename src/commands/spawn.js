@@ -4,7 +4,6 @@ import toml_to_js from "../transforms/toml_to_js.js";
 import get_list from "../lib/get_list.js";
 import filter_list from "../lib/filter_list.js";
 
-
 export default ({
     commander: `spawn [AVATARS...]`,
     help: `spawn [AVATARS] files`,
@@ -17,6 +16,7 @@ export default ({
                 output,
             } = toml_to_js(`./AVATARS/${name}.toml`);
 
+            // HACK: could name the file of the TOML something gnarly
             pm2.start({
                 name,
                 script: output,
@@ -30,6 +30,5 @@ export default ({
                 max_restart: 0
             });
         });
-
     }
 });

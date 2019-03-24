@@ -25,12 +25,14 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.4",
     "@babel/register": "^7.0.0",
-    "@isekai/eslint-config": "^1.0.0",
+    "@isekai/eslint-config": "^1.2.3",
     "chai": "^4.2.0",
     "eslint": "^5.15.3",
+    "mocha": "^6.0.2"
+  },
+  "dependencies": {
     "glob": "^7.1.2",
     "md5": "^2.2.1",
-    "mocha": "^6.0.2",
     "rollup": "^1.3.3",
     "rollup-copy-plugin": "^0.1.0",
     "rollup-plugin-commonjs": "^9.2.1",
@@ -48,14 +50,12 @@
     "rollup-pluginutils": "^2.0.1",
     "spritesmith-texturepacker": "^1.0.0",
     "svelte": "^3.0.0-beta.20",
-    "toml": "^3.0.0"
-  },
-  "dependencies": {
-    "isekai": "file:.",
+    "toml": "^3.0.0",
     "@octokit/webhooks": "^5.3.3",
     "chalk": "^2.4.2",
     "chokidar": "^2.1.2",
     "commonmark": "^0.28.1",
+    "degit": "^2.1.3",
     "express": "^4.16.4",
     "greenlock-express": "^2.6.8",
     "inquirer": "^6.2.2",

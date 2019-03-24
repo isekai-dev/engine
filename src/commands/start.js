@@ -1,6 +1,6 @@
 import watch from "./watch.js";
 import spawn from "./spawn.js";
-import exec from "./pm2.js";
+import exec from "../lib/exec.js";
 
 import get_list from "../lib/get_list.js";
 
@@ -16,9 +16,9 @@ export default ({
         watch.handler(this.data);
         spawn.handler(this.data);
 
-        exec.handler({
+        return exec({
             commands: [ `logs` ]
-        });
+        }).done;
     },
     cancel() {
         watch.cancel();

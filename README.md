@@ -24,9 +24,10 @@
     </a>
 </p>
 
-# QUICK START
-##
+# WHAT IS THIS?
+[ISEKAI*ENGINE] is the glue that sticks a bunch of opinionated useful software together and then exposes it as TOML configuration to the end user. Let [AVATAR]s handle the heavy work through [SKILL]s. The end goal is for anyone to be able to easily run their own servers for websites, games, social, chat, email and etc. This lets the end user own their own data and be able to do anything they want with it.
 
+# QUICK START
 Requires node.js to be installed.
 
 ```sh
@@ -50,6 +51,8 @@ Your DATA directory can override anything in BIN/DATA. Use this to mod graphics 
 ##
 
 Isekai turns configuration TOML files into executable javascript bundles for either node or the browser.
+
+
 
 ex:
 

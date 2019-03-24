@@ -1,11 +1,11 @@
-import pm2 from "./pm2.js";
+import exec from "../lib/exec.js";
 
 export default({
-    command: `status`,
-    help: `[STATUS] of active [AVATAR] files.`,
+    command: `status [AVATAR]`,
+    help: `status of active [AVATAR]s.`,
     alias: [ `ps`, `active`, `stats` ],
     handler: () => 
-        pm2.handler({
+        exec({
             commands: [ `ps` ]
-        })
+        }).done
 });
