@@ -1,24 +1,27 @@
 import pm2 from "pm2";
 
 import toml_to_js from "../transforms/toml_to_js.js";
-import get_list from "../lib/get_list.js";
-import filter_list from "../lib/filter_list.js";
+
+import prompt_avatars from "../lib/prompt_avatars.js";
 
 export default ({
     commander: `spawn [AVATARS...]`,
     help: `spawn [AVATARS] files`,
     hidden: true,
-    handler: ({
-        AVATARS = get_list()
-    }) => {
-        filter_list(AVATARS)((name) => {
+    async handler({ AVATARS }) {
+        const avatars = await prompt_avatars({
+            cmd: this,
+            AVATARS
+        });
+
+        avatars.forEach((avatar) => {
             const {
                 output,
-            } = toml_to_js(`./AVATARS/${name}.toml`);
+            } = toml_to_js(`./AVATARS/${avatar}.toml`);
 
             // HACK: could name the file of the TOML something gnarly
             pm2.start({
-                name,
+                name: avatar,
                 script: output,
                 watch: `./${output}`,
                 force: true,

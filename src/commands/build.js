@@ -1,28 +1,26 @@
 import toml_to_js from "../transforms/toml_to_js.js";
 import rollup from "rollup";
 
-import get_list from "../lib/get_list.js";
-import filter_list from "../lib/filter_list.js";
+import prompt_avatars from "../lib/prompt_avatars.js";
 
 export default ({
     command: `build [AVATARS...]`,
     help: `build all [AVATAR] save(s).`,
-    autocomplete: get_list(),
     hidden: true,
-    handler: ({ AVATARS = [] }) => {
-        if(AVATARS[0] === `all`) {
-            AVATARS = get_list();
-        }
-        
-        filter_list(AVATARS)(async (target) => {
+    async handler({ AVATARS }) {
+        const avatars = await prompt_avatars({ 
+            cmd: this,
+            AVATARS 
+        });
+
+        const built = await Promise.all(avatars.map(async (target) => {
             const { build_info, name } = await toml_to_js(`./AVATARS/${target}.toml`);
             const bundle = await rollup.rollup(build_info);
 
             await bundle.write(build_info.output);
             console.log(`[${name}] Build Complete.\r\n`);
-        }).
-            then((promises) => {
-                console.log(`Built ${promises.length} [AVATAR](s).`);
-            });
+        }));
+
+        console.log(`Built ${built.length} [AVATAR](s).`); 
     }
 });

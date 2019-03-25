@@ -17,13 +17,12 @@ const get_config = (configFile) => {
     if(config.has) {
         return {
             ...config.has.reduce((obj, other_file) => ({
-                ...get_config(other_file),
+                ...get_config(`./AVATARS/${other_file}.toml`),
                 ...obj
             }), {}), 
             ...config
         };
     }
-    
     
     return config;
 };
