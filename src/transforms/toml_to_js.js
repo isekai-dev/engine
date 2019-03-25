@@ -1,53 +1,20 @@
 import fs from "fs";
 import toml from "toml";
 import path from "path";
-import glob from "glob";
+
 import c from "chalk";
 import builders from "../rollup/builders.js";
-
-// don't really support overrides
-const glob_obj = (glob_path) => glob.sync(glob_path).
-    reduce((obj, equip_path) => {
-        const project_name = path.basename(path.resolve(equip_path, `..`, `..`));
-        const skill_name = path.basename(equip_path);
-
-        if(obj[skill_name]) {
-            // prevents hijacking
-            throw new Error(`${skill_name} from ${project_name} overlaps ${obj[skill_name]}`);
-        }
-        
-        return { 
-            [skill_name]: `../node_modules/${project_name}`,
-            ...obj 
-        };
-    }, {});
+import get_skills from "../lib/get_skills.js";
+import get_config from "../lib/get_config.js";
 
 // Mix Config File in and run these in order
 export default (configFile) => Object.values({
-    gather_SKILLS: () => ({
-        SKILLS: glob_obj(`./SKILLS/*/`),
-        SHOP: glob_obj(`./node_modules/*/SKILLS/*/`)
+    get_skills,
+
+    get_config: ({ configFile }) => ({
+        config: get_config(configFile)
     }),
-
-    read_config: ({
-        configFile,
-    }) => {
-        // verify toml exists
-        let raw;
-
-        try {
-            raw = fs.readFileSync(configFile, `utf-8`);
-        } catch (exception) {
-            throw new Error(`Couldn't read ${configFile}. Are you sure this path is correct?`);
-        }
-
-        const config = toml.parse(raw);
-
-        return {
-            config,
-        };
-    },
-
+    
     set_names: ({
         configFile,
     }) => {
@@ -90,7 +57,7 @@ export default (configFile) => Object.values({
             filter((key) => {
                 const is_upper = key === key.toUpperCase();
                 if(!is_upper) {
-                    console.log(`[${key}] was not UPPERCASE silly.`);
+                    return false;
                 }
 
                 const has_skill = SKILLS[key];
@@ -105,7 +72,8 @@ export default (configFile) => Object.values({
             }).
             map((key) => {
                 const where = SHOP[key] 
-                    ? `${SHOP[key]}`
+                    ? `../${SHOP[key].split(path.sep).
+                        join(`/`)}`
                     : `..`;
 
                 write(`import ${key} from "${where}/SKILLS/${key}/${type}.js";`);

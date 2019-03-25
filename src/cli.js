@@ -7,7 +7,6 @@ import { version } from "../package.json";
 import "./lib/format.js";
 
 import chalk from "chalk";
-import { start } from "pm2";
 
 const v = vorpal();
 

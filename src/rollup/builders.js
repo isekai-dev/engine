@@ -22,15 +22,13 @@ import version from "./version.js";
 const CODE_VERSION = uuid();
 const production = !process.env.ROLLUP_WATCH;
 
-const do_copy = (copyObject) => 
-    copy(Object.keys(copyObject).
-        map(
-            (key) => 
-                ({
-                    files: key,
-                    dest: copyObject[key]
-                })
-        ));
+const do_copy = (copyObject) => copy(Object.keys(copyObject).
+    map(
+        (key) => ({
+            files: key,
+            dest: copyObject[key]
+        })
+    ));
 
 let CLIENT_VERSION = uuid();
 
@@ -46,41 +44,39 @@ const node = ({
     input,
     output,
     copy: copyObject = {}
-}) => 
-    ({
-        input,
-        output: {
-            sourcemap: `inline`,
-            file: output,
-            format: `cjs`,
-        },
-        external,
-        plugins: [
-            glob(),
-            replace({
-                CODE_VERSION,
-            }),
-            md(),
-            json(),
-            do_copy(copyObject),
-            toml
-        ],
-    });
+}) => ({
+    input,
+    output: {
+        sourcemap: `inline`,
+        file: output,
+        format: `cjs`,
+    },
+    external,
+    plugins: [
+        glob(),
+        replace({
+            CODE_VERSION,
+        }),
+        md(),
+        json(),
+        do_copy(copyObject),
+        toml
+    ],
+});
 
 const browser = ({
     input,
     output,
     css: cssPath,
     copy: copyObject,
-}) => 
-    ({
-        input,
-        output: {
-            file: output,
-            format: `iife`,
-        },
-        external: [ `uuid`, `uuid/v1`, `pixi.js` ],
-        plugins: [
+}) => ({
+    input,
+    output: {
+        file: output,
+        format: `iife`,
+    },
+    external: [ `uuid`, `uuid/v1`, `pixi.js` ],
+    plugins: [
         // // make this a reactive plugin to ".tilemap.json"
         //     spritesmith({
         //         src: {
@@ -99,33 +95,31 @@ const browser = ({
         //         },
         //         customTemplate: texturePacker
         //     }),
-            glob(),
-            cjs({
-                include: `node_modules/**`, 
-            }),
-            json(),
-            replace({
-                CODE_VERSION,
-                CLIENT_VERSION: () => 
-                    CLIENT_VERSION
-            }),
-            toml,
-            md(),
-            svelte({
-                css: (css) => {
-                    css.write(cssPath);
-                },
-            }),
-            resolve(),
-            production && terser(),
-            do_copy(copyObject),
-            version({
-                path: `./.BIN/client.version`,
-                version: () => 
-                    CLIENT_VERSION
-            })
-        ]
-    });
+        glob(),
+        cjs({
+            include: `node_modules/**`, 
+        }),
+        json(),
+        replace({
+            CODE_VERSION,
+            CLIENT_VERSION: () => CLIENT_VERSION
+        }),
+        toml,
+        md(),
+        svelte({
+            css: (css) => {
+                css.write(cssPath);
+            },
+        }),
+        resolve(),
+        production && terser(),
+        do_copy(copyObject),
+        version({
+            path: `./.BIN/client.version`,
+            version: () => CLIENT_VERSION
+        })
+    ]
+});
 
 export default {
     node,

@@ -4,22 +4,39 @@ import pm2 from "../lib/pm2.js";
 
 import get_list from "../lib/get_list.js";
 
+const run_avatars = ({ AVATARS }) => {
+    if(AVATARS[0] === `all`) {
+        AVATARS = get_list();
+    }
+
+    watch.handler({ AVATARS });
+    spawn.handler({ AVATARS });
+
+    return pm2({
+        commands: [ `logs` ]
+    }).done;
+};
+
 export default ({
-    command: `run [...AVATARs]`,
+    command: `run [AVATARS...]`,
     help: `run and watch [AVATAR] files`,
     alias: [ `dev`, `start` ],
-    handler(data) { 
-        this.data = data.AVATARS 
-            ? data
-            : { AVATARS: get_list() };
+    handler({ AVATARS }) {
+        if(!AVATARS) {
+            this.prompt({
+                type: `list`,
+                name: `AVATAR`,
+                message: `Which [AVATAR] to run?`,
+                choices: [ `all`, ...get_list() ]
+            }).
+                then(({ AVATAR }) => run_avatars({ AVATARS: [ AVATAR ] }));
 
-        watch.handler(this.data);
-        spawn.handler(this.data);
+            return;
+        }
 
-        return pm2({
-            commands: [ `logs` ]
-        }).done;
+        run_avatars({ AVATARS });
     },
+    
     cancel() {
         watch.cancel();
     }
