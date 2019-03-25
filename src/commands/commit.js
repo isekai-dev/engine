@@ -9,5 +9,6 @@ export default ({
         message = [ `Update, no commit message` ]
     }) => git.add([ `.` ]).
         then(() => git.commit(message.join(` `))).
-        then(() => console.log(`Commited with message ${message}`))
+        then(() => git.push(`origin`, `master`)).
+        then(() => console.log(`Commited with message ${message.join(` `)}`))
 });
