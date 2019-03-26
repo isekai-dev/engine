@@ -1,5 +1,4 @@
 import fs from "fs";
-import toml from "toml";
 import path from "path";
 
 import c from "chalk";
@@ -35,8 +34,7 @@ export default (configFile) => Object.values({
     write_entry: ({
         config,
         name,
-        SKILLS,
-        SHOP
+        SKILLS
     }) => {
         // WRITE OUT FILE
         let entry = ``;
@@ -60,21 +58,21 @@ export default (configFile) => Object.values({
                     return false;
                 }
 
-                const has_skill = SKILLS[key];
-                const in_shop = SHOP[key];
+                const has_skill = SKILLS[key] !== undefined;
+
                 const is_target = [ `BROWSER`, `NODE` ].indexOf(key) !== -1;
 
-                if(!has_skill && !in_shop && !is_target) {
+                if(!has_skill && !is_target) {
                     fails.push(key);
                 }
 
-                return is_upper && (has_skill || in_shop);
+                return is_upper && has_skill;
             }).
             map((key) => {
-                const where = SHOP[key] 
-                    ? `../${SHOP[key].split(path.sep).
-                        join(`/`)}`
-                    : `..`;
+                const where = SKILLS[key] === ``
+                    ? `..`
+                    : `../${SKILLS[key].split(path.sep).
+                        join(`/`)}`;
 
                 write(`import ${key} from "${where}/SKILLS/${key}/${type}.js";`);
             

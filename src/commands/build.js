@@ -21,6 +21,6 @@ export default ({
             console.log(`[${name}] Build Complete.\r\n`);
         }));
 
-        console.log(`Built ${built.length} [AVATAR](s).`); 
+        console.log(`Built ${built.length} [AVATAR](s).`);
     }
 });
