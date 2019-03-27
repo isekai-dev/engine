@@ -7,15 +7,15 @@ export default ({
     command: `push`,
     alias: [ `publish` ],
     async handler() {
-        await Promise.all(glob.sync(`./AVATARS/*.toml`).
-            map((avatar) => {
-                const { ADMIN } = get_config(avatar);
+        await Promise.all(glob.sync(`./DAEMONS/*.toml`).
+            map((DAEMON) => {
+                const { ADMIN } = get_config(DAEMON);
                 if(ADMIN && ADMIN.zalgo) {
                     const { 
                         url = `http://localhost:8080`,
                         zalgo 
                     } = ADMIN;
-                    console.log(`PUSHING [${avatar}] - ${url}`);
+                    console.log(`PUSHING [${DAEMON}] - ${url}`);
 
                     return fetch(`${url}/zalgo`, {
                         method: `POST`,

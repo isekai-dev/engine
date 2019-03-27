@@ -149,7 +149,7 @@ ${c.red(failed)}
             };
         }
 
-        throw new Error(`You must specify either [NODE] or [BROWSER] for your target in your [AVATAR] toml`);
+        throw new Error(`You must specify either [NODE] or [BROWSER] for your target in your [DAEMON] toml`);
     }
 }).
     reduce((state, fn) => ({

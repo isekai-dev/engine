@@ -31,6 +31,6 @@ export default ({
             });
         })).
         then(() => {
-            console.log(`COMPLETE: [run] to start your avatars.`);
+            console.log(`COMPLETE: [run] to start your DAEMONs.`);
         })
 });

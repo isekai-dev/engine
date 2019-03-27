@@ -5,27 +5,27 @@ import c from "chalk";
 import toml_to_js from "../transforms/toml_to_js.js";
 
 import action from "../lib/action.js";
-import prompt_avatars from "../lib/prompt_avatars.js";
+import prompt_daemons from "../lib/prompt_daemons.js";
 
 export default ({
-    command: `load [AVATARS...]`,
-    help: `load [AVATAR] saves`,
+    command: `load [DAEMONS...]`,
+    help: `load [DAEMON] saves`,
     alias: [ `regenerate`, `recreate`, `watch` ],
     hidden: true,
     cancel () {
         this.watchers.forEach((watcher) => watcher.close());
         console.log(`YOUR WATCH HAS ENDED`);
     },
-    async handler({ AVATARS }) {
+    async handler({ DAEMONS }) {
         this.watchers = [];
             
-        const avatars = await prompt_avatars({
+        const DAEMONs = await prompt_daemons({
             cmd: this,
-            AVATARS
+            DAEMONS
         });
         
-        avatars.forEach((target) => {
-            const file_path = `./AVATARS/${target}.toml`;
+        DAEMONs.forEach((target) => {
+            const file_path = `./DAEMONS/${target}.toml`;
 
             const data = toml_to_js(file_path);
 

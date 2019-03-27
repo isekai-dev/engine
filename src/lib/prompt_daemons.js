@@ -3,27 +3,27 @@ import filter_list from "../lib/filter_list.js";
 
 export default ({
     cmd,
-    AVATARS
+    DAEMONS
 }) => {
-    if(!AVATARS) {
+    if(!DAEMONS) {
         return cmd.prompt({
             type: `list`,
-            name: `AVATAR`,
-            message: `Which [AVATAR]?`,
+            name: `DAEMON`,
+            message: `Which [DAEMON]?`,
             choices: [ `all`, ...get_list() ]
         }).
-            then(({ AVATAR }) => {
-                console.log(AVATAR, `AVATAR`);
+            then(({ DAEMON }) => {
+                console.log(DAEMON, `DAEMON`);
                 
-                return AVATAR === `all` 
+                return DAEMON === `all` 
                     ? get_list() 
-                    : filter_list([ AVATAR ]);
+                    : filter_list([ DAEMON ]);
             });
     }
     
-    if(AVATARS[0] === `all`) {
+    if(DAEMONS[0] === `all`) {
         return get_list();
     }
 
-    return filter_list(AVATARS);
+    return filter_list(DAEMONS);
 };

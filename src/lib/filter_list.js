@@ -5,7 +5,7 @@ export default (classes) => classes.filter((target) => {
         indexOf(target) !== -1;
 
     if(!is_okay) {
-        console.log(`${target} is not an available [AVATAR]`);
+        console.log(`${target} is not an available [DAEMON]`);
     }
         
     return is_okay;

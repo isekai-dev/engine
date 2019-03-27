@@ -3,11 +3,11 @@ import spawn from "./spawn.js";
 import pm2 from "../lib/pm2.js";
 
 import stop from "./stop.js";
-import prompt_avatars from "../lib/prompt_avatars.js";
+import prompt_daemons from "../lib/prompt_daemons.js";
 
-const run_avatars = ({ AVATARS }) => {
-    watch.handler({ AVATARS });
-    spawn.handler({ AVATARS });
+const run_DAEMONs = ({ DAEMONS }) => {
+    watch.handler({ DAEMONS });
+    spawn.handler({ DAEMONS });
 
     return pm2({
         commands: [ `logs` ]
@@ -15,18 +15,18 @@ const run_avatars = ({ AVATARS }) => {
 };
 
 export default ({
-    command: `run [AVATARS...]`,
-    help: `run and watch [AVATAR] files`,
+    command: `run [DAEMONS...]`,
+    help: `run and watch [DAEMON] files`,
     alias: [ `dev`, `start` ],
-    async handler({ AVATARS }) {
-        const avatars = await prompt_avatars({
+    async handler({ DAEMONS }) {
+        const DAEMONs = await prompt_daemons({
             cmd: this,
-            AVATARS
+            DAEMONS
         });
-        
+
         await stop.handler();
         
-        return run_avatars({ AVATARS: avatars });
+        return run_DAEMONs({ DAEMONS: DAEMONs });
     },
 
     cancel() {

@@ -17,7 +17,7 @@ const get_config = (configFile) => {
     if(config.has) {
         return {
             ...config.has.reduce((obj, other_file) => ({
-                ...get_config(`./AVATARS/${other_file}.toml`),
+                ...get_config(`./DAEMONS/${other_file}.toml`),
                 ...obj
             }), {}), 
             ...config
