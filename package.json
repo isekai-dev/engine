@@ -1,6 +1,6 @@
 {
   "name": "isekai",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A Stranger in a Strange Land",
   "main": ".BIN/isekai.js",
   "scripts": {
