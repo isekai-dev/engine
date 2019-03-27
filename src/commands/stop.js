@@ -9,7 +9,7 @@ export default ({
         this.canceler();
     },
     
-    handler({ AVATARS = get_list() }) {
+    handler({ AVATARS = get_list() } = false) {
         const whom = AVATARS.map((char) => `[${char}]`).
             join(` - `);
 

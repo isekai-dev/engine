@@ -2,6 +2,7 @@ import watch from "./watch.js";
 import spawn from "./spawn.js";
 import pm2 from "../lib/pm2.js";
 
+import stop from "./stop.js";
 import prompt_avatars from "../lib/prompt_avatars.js";
 
 const run_avatars = ({ AVATARS }) => {
@@ -22,7 +23,9 @@ export default ({
             cmd: this,
             AVATARS
         });
-
+        
+        await stop.handler();
+        
         return run_avatars({ AVATARS: avatars });
     },
 
