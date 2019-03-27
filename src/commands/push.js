@@ -1,15 +1,12 @@
-import vorpal from "vorpal";
 import fetch from "node-fetch";
 import glob from "glob";
 import get_config from "../lib/get_config.js";
 
 // TODO: This should really be exposed by isekai core some how. Like a way to add in tools
 export default ({
-    command: `push <message>`,
+    command: `push`,
     alias: [ `publish` ],
-    handler: async ({ message }) => {
-        await vorpal.exec(`commit ${message}`);
-
+    async handler() {
         await Promise.all(glob.sync(`./AVATARS/*.toml`).
             map((avatar) => {
                 const { ADMIN } = get_config(avatar);
