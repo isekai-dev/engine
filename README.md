@@ -24,6 +24,9 @@
     </a>
 </p>
 
+# :WARNING: 
+Still super early. Use at your own risk.
+
 # WHAT IS THIS?
 [ISEKAI*ENGINE] is the glue that sticks a bunch of opinionated useful software together and then exposes it as TOML configuration to the end user. Let [AVATAR]s handle the heavy work through [SKILL]s. The end goal is for anyone to be able to easily run their own servers for websites, games, social, chat, email and etc. This lets the end user own their own data and be able to do anything they want with it.
 
