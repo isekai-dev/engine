@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import glob from "glob";
 import get_config from "../lib/get_config.js";
+import path from "path";
 
 // TODO: This should really be exposed by isekai core some how. Like a way to add in tools
 export default ({
@@ -15,7 +16,7 @@ export default ({
                         url = `http://localhost:8080`,
                         zalgo 
                     } = ADMIN;
-                    console.log(`PUSHING [${DAEMON}] - ${url}`);
+                    console.log(`PUSHING [${path.basename(DAEMON, `.toml`)}] - ${url}`);
 
                     return fetch(`${url}/zalgo`, {
                         method: `POST`,

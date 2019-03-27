@@ -2,9 +2,9 @@ import pm2 from "../lib/pm2.js";
 import get_list from "../lib/get_list.js";
 
 export default ({
-    command: `stop [DAEMONS...]`,
-    help: `stop active [DAEMON] files. `, 
-    alias: [`unsummon`, `kill`],
+    command: `slay [DAEMONS...]`,
+    help: `slay active [DAEMONS]`, 
+    alias: [ `unsummon`, `kill`, `slay`, `stop` ],
     cancel() {
         this.canceler();
     },
@@ -13,7 +13,7 @@ export default ({
         const whom = DAEMONS.map((char) => `[${char}]`).
             join(` - `);
 
-        console.log(`STOPPING ${whom}`);
+        console.log(`SLAYING ${whom}`);
 
         const { cancel, done } = pm2({
             commands: [ `delete`, `all` ]
