@@ -4,7 +4,7 @@ import get_list from "../lib/get_list.js";
 export default ({
     command: `stop [DAEMONS...]`,
     help: `stop active [DAEMON] files. `, 
-    
+    alias: [`unsummon`, `kill`],
     cancel() {
         this.canceler();
     },

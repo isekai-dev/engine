@@ -5,7 +5,7 @@ import pm2 from "../lib/pm2.js";
 import stop from "./stop.js";
 import prompt_daemons from "../lib/prompt_daemons.js";
 
-const run_DAEMONs = ({ DAEMONS }) => {
+const run_daemons = ({ DAEMONS }) => {
     watch.handler({ DAEMONS });
     spawn.handler({ DAEMONS });
 
@@ -15,9 +15,9 @@ const run_DAEMONs = ({ DAEMONS }) => {
 };
 
 export default ({
-    command: `run [DAEMONS...]`,
-    help: `run and watch [DAEMON] files`,
-    alias: [ `dev`, `start` ],
+    command: `summon [DAEMONS...]`,
+    help: `summon and watch [DAEMONS...]`,
+    alias: [ `dev`, `start`, `run` ],
     async handler({ DAEMONS }) {
         const DAEMONs = await prompt_daemons({
             cmd: this,
@@ -26,7 +26,7 @@ export default ({
 
         await stop.handler();
         
-        return run_DAEMONs({ DAEMONS: DAEMONs });
+        return run_daemons({ DAEMONS: DAEMONs });
     },
 
     cancel() {
