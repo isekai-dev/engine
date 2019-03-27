@@ -5,8 +5,7 @@ export default ({
     alias: [ `ls`, `saves`, `character` ],
     handler: (args, cb) => {
         console.log(get_list().
-            map((i) => 
-                `[${i}]`).
+            map((i) => `[${i}]`).
             join(` - `), `\r\n`);    
             
         cb();

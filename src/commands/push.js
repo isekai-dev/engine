@@ -8,7 +8,7 @@ export default ({
     command: `push <message>`,
     alias: [ `publish` ],
     handler: async ({ message }) => {
-        // await vorpal.exec(`commit ${message}`);
+        await vorpal.exec(`commit ${message}`);
 
         await Promise.all(glob.sync(`./AVATARS/*.toml`).
             map((avatar) => {
