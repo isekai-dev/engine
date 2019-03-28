@@ -9,12 +9,12 @@ export default ({
     help: `spawn [DAEMONS] files`,
     hidden: true,
     async handler({ DAEMONS }) {
-        const DAEMONs = await prompt_daemons({
+        const daemons = await prompt_daemons({
             cmd: this,
             DAEMONS
         });
 
-        DAEMONs.forEach((DAEMON) => {
+        daemons.forEach((DAEMON) => {
             const {
                 output,
             } = toml_to_js(`./DAEMONS/${DAEMON}.toml`);
@@ -33,5 +33,7 @@ export default ({
                 max_restart: 0
             });
         });
+
+        console.log(`Spawned ${daemons.join(` - `)}`);
     }
 });

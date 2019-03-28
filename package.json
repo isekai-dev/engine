@@ -1,6 +1,6 @@
 {
   "name": "isekai",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A Stranger in a Strange Land",
   "main": ".BIN/isekai.js",
   "scripts": {
@@ -28,7 +28,7 @@
     "@isekai/eslint-config": "^1.2.3",
     "chai": "^4.2.0",
     "eslint": "^5.15.3",
-  "mocha": "^6.0.2"
+    "mocha": "^6.0.2"
   },
   "dependencies": {
     "chalk": "^2.4.2",
@@ -54,7 +54,7 @@
     "rollup-plugin-toml": "^1.0.0",
     "rollup-pluginutils": "^2.0.1",
     "simple-git": "^1.110.0",
-    "svelte": "^3.0.0-beta.20",
+    "svelte": "^3.0.0-beta.21",
     "toml": "^3.0.0",
     "vorpal": "^1.12.0"
   },

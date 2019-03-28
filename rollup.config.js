@@ -14,6 +14,7 @@ export default [
     }, {
         input: `src/isekai.js`,
         output: {
+            name: `isekai`,
             sourcemap: `inline`,
             file: `.BIN/isekai.js`,
             format: `cjs`

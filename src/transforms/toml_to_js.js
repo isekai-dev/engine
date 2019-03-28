@@ -119,17 +119,13 @@ ${c.red(failed)}
         name,
         config,
     }) => {
-        const target = config.NODE 
-            ? `NODE` 
-            : `BROWSER`;
-
-        const output = `.BIN/${name}.${target}.js`;
-
         if(config.NODE && config.BROWSER) {
             throw new Error(`You cannot target both [NODE] and [BROWSER]`);
         }
 
-        if(config.NODE) {               
+        if(config.NODE) {
+            const output = `.BIN/${name}.js`;               
+            
             return {
                 output,
                 build_info: builders.node({
@@ -140,6 +136,8 @@ ${c.red(failed)}
         }
         
         if(config.BROWSER) {
+            const output = `DATA/public/${name}.js`;
+
             return {
                 output,
                 build_info: builders.browser({

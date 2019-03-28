@@ -47,6 +47,9 @@ export default ({
                 }   
             }).
                 on(`event`, action({
+                    BUNDLE_END: () => {
+                        console.log(`[${target}][WATCH] Built.`);
+                    },
                     ERROR: (e) => {
                         console.log(e);
                     },

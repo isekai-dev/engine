@@ -1,7 +1,9 @@
+import path from "path";
+
 import toml from "rollup-plugin-toml";
 import svelte from "rollup-plugin-svelte";
 import resolve from "rollup-plugin-node-resolve";
-import copy from "rollup-plugin-copy-glob";
+
 import replace from "rollup-plugin-replace";
 
 import json from "rollup-plugin-json";
@@ -20,15 +22,7 @@ import glob from "./plugin-glob.js";
 import version from "./version.js";
 
 const CODE_VERSION = uuid();
-const production = !process.env.ROLLUP_WATCH;
-
-const do_copy = (copyObject) => copy(Object.keys(copyObject).
-    map(
-        (key) => ({
-            files: key,
-            dest: copyObject[key]
-        })
-    ));
+const production = false;
 
 let CLIENT_VERSION = uuid();
 
@@ -43,7 +37,6 @@ const external = [
 const node = ({
     input,
     output,
-    copy: copyObject = {}
 }) => ({
     input,
     output: {
@@ -59,21 +52,23 @@ const node = ({
         }),
         md(),
         json(),
-        do_copy(copyObject),
         toml
     ],
 });
 
+// TODO: Offer up some of these options to the Daemon files
 const browser = ({
     input,
     output,
-    css: cssPath,
-    copy: copyObject,
+    css: cssPath = `./DATA/public/${path.basename(output, `.js`)}.css`
 }) => ({
     input,
     output: {
         file: output,
         format: `iife`,
+        globals: {
+            "pixi.js": `PIXI`,
+        },
     },
     external: [ `uuid`, `uuid/v1`, `pixi.js` ],
     plugins: [
@@ -96,8 +91,9 @@ const browser = ({
         //         customTemplate: texturePacker
         //     }),
         glob(),
+        resolve(),
         cjs({
-            include: `node_modules/**`, 
+            
         }),
         json(),
         replace({
@@ -111,9 +107,7 @@ const browser = ({
                 css.write(cssPath);
             },
         }),
-        resolve(),
         production && terser(),
-        do_copy(copyObject),
         version({
             path: `./.BIN/client.version`,
             version: () => CLIENT_VERSION
