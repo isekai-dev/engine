@@ -22,7 +22,7 @@ import glob from "./plugin-glob.js";
 import version from "./version.js";
 
 const CODE_VERSION = uuid();
-const production = false;
+const production = true;
 
 let CLIENT_VERSION = uuid();
 

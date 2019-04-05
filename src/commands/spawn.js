@@ -17,8 +17,15 @@ export default ({
         daemons.forEach((DAEMON) => {
             const {
                 output,
+                config: {
+                    NODE
+                }
             } = toml_to_js(`./DAEMONS/${DAEMON}.toml`);
 
+            if(!NODE) {
+                return;
+            }
+            
             // HACK: could name the file of the TOML something gnarly
             pm2.start({
                 name: DAEMON,
