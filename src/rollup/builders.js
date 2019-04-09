@@ -22,7 +22,7 @@ import glob from "./plugin-glob.js";
 import version from "./version.js";
 
 const CODE_VERSION = uuid();
-const production = true;
+const production = false;
 
 let CLIENT_VERSION = uuid();
 
@@ -40,7 +40,6 @@ const node = ({
 }) => ({
     input,
     output: {
-        sourcemap: `inline`,
         file: output,
         format: `cjs`,
     },

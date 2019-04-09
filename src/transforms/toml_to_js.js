@@ -45,6 +45,8 @@ export default (configFile) => Object.values({
         const write = (data) => {
             entry += `${data}\r\n`;
         };
+
+        config.DAEMON = { name };
         
         write(`import isekai from "isekai";`);
         write(`isekai.SET(${JSON.stringify(config)});`);

@@ -1,6 +1,6 @@
 {
   "name": "isekai",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "A Stranger in a Strange Land",
   "main": ".BIN/isekai.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "type": "git",
     "url": "https://github.com/isekai-dev/engine"
   },
-  "license": "see LICENSE file",
+  "license": "AGPL-3.0-or-later",
   "author": "AGoblinKing",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
