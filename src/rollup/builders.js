@@ -59,7 +59,7 @@ const node = ({
 const browser = ({
     input,
     output,
-    css: cssPath = `./DATA/public/${path.basename(output, `.js`)}.css`
+    css: cssPath = `./.BIN/${path.basename(output, `.js`)}.css`
 }) => ({
     input,
     output: {
@@ -108,7 +108,7 @@ const browser = ({
         }),
         production && terser(),
         version({
-            path: `./.BIN/client.version`,
+            path: `./.BIN/${path.basename(output, `.js`)}.version`,
             version: () => CLIENT_VERSION
         })
     ]

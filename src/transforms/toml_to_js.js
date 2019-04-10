@@ -138,7 +138,7 @@ ${c.red(failed)}
         }
         
         if(config.BROWSER) {
-            const output = `DATA/public/${name}.js`;
+            const output = `.BIN/${name}.js`;
 
             return {
                 output,
